@@ -1,0 +1,210 @@
+{
+  "source": "data.gov.ro CKAN API",
+  "license": "Creative Commons Attribution 4.0",
+  "datasets": [
+    {
+      "year": "2024",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "title": "Achizitii publice 2024"
+    },
+    {
+      "year": "2025",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "title": "Achiziții publice 2025"
+    }
+  ],
+  "resources": [
+    {
+      "year": "2024",
+      "quarter": "t1",
+      "kind": "contracts",
+      "name": "Contracte publicate T I 2024",
+      "resource_id": "24acca3c-2993-41a3-966b-ebb574df48c4",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": ".csv",
+      "size_bytes": 9620532,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/24acca3c-2993-41a3-966b-ebb574df48c4/download/datagov-raport-contracte-publicate-t-i-2024.csv",
+      "path": "data/raw/2024/datagov-raport-contracte-publicate-t-i-2024.csv"
+    },
+    {
+      "year": "2024",
+      "quarter": "t1",
+      "kind": "direct",
+      "name": "Achiziții Directe T I 2024",
+      "resource_id": "83552692-ac36-45e0-9e5b-5c6bded5f001",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": "CSV",
+      "size_bytes": 139948894,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/83552692-ac36-45e0-9e5b-5c6bded5f001/download/datagov-raport-achizitii-directe-t-i-2024.csv",
+      "path": "data/raw/2024/datagov-raport-achizitii-directe-t-i-2024.csv"
+    },
+    {
+      "year": "2024",
+      "quarter": "t2",
+      "kind": "contracts",
+      "name": "Raport Contracte publicate T II 2024",
+      "resource_id": "c5f1fefc-7940-47ff-ac08-8783ea6484cf",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": "CSV",
+      "size_bytes": 72522249,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/c5f1fefc-7940-47ff-ac08-8783ea6484cf/download/datagov-raport-contracte-publicate-t-ii-2024.csv",
+      "path": "data/raw/2024/datagov-raport-contracte-publicate-t-ii-2024.csv"
+    },
+    {
+      "year": "2024",
+      "quarter": "t2",
+      "kind": "direct",
+      "name": "Achiziții Directe T II 2024",
+      "resource_id": "90972e66-d526-4c54-94b5-cf33330a8e7c",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": ".csv",
+      "size_bytes": 150005213,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/90972e66-d526-4c54-94b5-cf33330a8e7c/download/datagov-raport-achizitii-directe-t-ii-2024.csv",
+      "path": "data/raw/2024/datagov-raport-achizitii-directe-t-ii-2024.csv"
+    },
+    {
+      "year": "2024",
+      "quarter": "t3",
+      "kind": "contracts",
+      "name": " Contracte publicate T III 2024",
+      "resource_id": "9844ef50-42f2-4e53-affb-402dad0044a0",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": "XLS",
+      "size_bytes": 57863168,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/9844ef50-42f2-4e53-affb-402dad0044a0/download/datagov-raport-contracte-tiii.xls",
+      "path": "data/raw/2024/datagov-raport-contracte-tiii.xls"
+    },
+    {
+      "year": "2024",
+      "quarter": "t3",
+      "kind": "direct",
+      "name": "Achiziții directe T III 2024",
+      "resource_id": "66232a37-9585-4561-a8f9-a97735b0c1f1",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": ".xls",
+      "size_bytes": 148235264,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/66232a37-9585-4561-a8f9-a97735b0c1f1/download/datagov-raport-achizitii-directe-tiii.xls",
+      "path": "data/raw/2024/datagov-raport-achizitii-directe-tiii.xls"
+    },
+    {
+      "year": "2024",
+      "quarter": "t4",
+      "kind": "contracts",
+      "name": "Contracte T IV",
+      "resource_id": "429bccb5-055c-42d0-891d-922dc5197ca7",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": "XLSX",
+      "size_bytes": 9617308,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/429bccb5-055c-42d0-891d-922dc5197ca7/download/datagov-raport-contracte-t-iv_2024.xlsx",
+      "path": "data/raw/2024/datagov-raport-contracte-t-iv_2024.xlsx"
+    },
+    {
+      "year": "2024",
+      "quarter": "t4",
+      "kind": "direct",
+      "name": "Achiziții directe T IV",
+      "resource_id": "dd109516-aaa9-421b-bd4a-7b6ae4f3da43",
+      "package_id": "ed84773a-06c6-4016-ad59-8f1d06b8ec1d",
+      "format": "XLSX",
+      "size_bytes": 72239816,
+      "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/dd109516-aaa9-421b-bd4a-7b6ae4f3da43/download/datagov-raport-achizitii-directe-t-iv_2024.xlsx",
+      "path": "data/raw/2024/datagov-raport-achizitii-directe-t-iv_2024.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t1",
+      "kind": "contracts",
+      "name": "Contracte T1 2025",
+      "resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": "XLSX",
+      "size_bytes": 12475121,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/7344eeaf-c478-4f87-9669-c1bac3e521a8/download/datagov_raport_contracte_t1_2025.xlsx",
+      "path": "data/raw/2025/datagov_raport_contracte_t1_2025.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t1",
+      "kind": "direct",
+      "name": "Achiziții directe T1 2025",
+      "resource_id": "4ea2f0d0-ad5d-440f-af9d-7101bc9e4969",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": ".xlsx",
+      "size_bytes": 63124401,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/4ea2f0d0-ad5d-440f-af9d-7101bc9e4969/download/datagov_raport-achizitii_directe_t1_2025.xlsx",
+      "path": "data/raw/2025/datagov_raport-achizitii_directe_t1_2025.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t2",
+      "kind": "contracts",
+      "name": "Contracte TII 2025",
+      "resource_id": "91947695-b315-4d72-b292-84bd57a9c72b",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": "XLSX",
+      "size_bytes": 20864076,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/91947695-b315-4d72-b292-84bd57a9c72b/download/contracte-t2-2025.xlsx",
+      "path": "data/raw/2025/contracte-t2-2025.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t2",
+      "kind": "direct",
+      "name": "Achiziții directe TII 2025",
+      "resource_id": "8e6fa9e7-62e9-4ec2-bef5-495f3d09eef3",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": "XLSX",
+      "size_bytes": 77822077,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/8e6fa9e7-62e9-4ec2-bef5-495f3d09eef3/download/achizitii-directe-t2-2025.xlsx",
+      "path": "data/raw/2025/achizitii-directe-t2-2025.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t3",
+      "kind": "contracts",
+      "name": "Contracte TIII 2025",
+      "resource_id": "e2ef5a81-59ec-4789-9baa-fd175b217893",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": "XLSX",
+      "size_bytes": 14360050,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/e2ef5a81-59ec-4789-9baa-fd175b217893/download/datagov-contracte-tiii-2025.xlsx",
+      "path": "data/raw/2025/datagov-contracte-tiii-2025.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t3",
+      "kind": "direct",
+      "name": "Achiziții directe TIII 2025",
+      "resource_id": "21cd9887-26ca-418d-ade4-be5d369b4246",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": "XLSX",
+      "size_bytes": 65513898,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/21cd9887-26ca-418d-ade4-be5d369b4246/download/datagov-achizitii-directe-tiii-2025.xlsx",
+      "path": "data/raw/2025/datagov-achizitii-directe-tiii-2025.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t4",
+      "kind": "contracts",
+      "name": "Contracte T IV 2025",
+      "resource_id": "a1936e88-7fc5-4ffc-af65-6f946e98a005",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": ".xlsx",
+      "size_bytes": 15367450,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/a1936e88-7fc5-4ffc-af65-6f946e98a005/download/contracte-t_iv_2025.xlsx",
+      "path": "data/raw/2025/contracte-t_iv_2025.xlsx"
+    },
+    {
+      "year": "2025",
+      "quarter": "t4",
+      "kind": "direct",
+      "name": "Achiziții directe T IV 2025",
+      "resource_id": "370af861-b17f-4807-b69c-9cf3b67df997",
+      "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+      "format": ".xlsx",
+      "size_bytes": 76134210,
+      "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/370af861-b17f-4807-b69c-9cf3b67df997/download/achiziii-directe-t_iv_2025.xlsx",
+      "path": "data/raw/2025/achiziii-directe-t_iv_2025.xlsx"
+    }
+  ]
+}
