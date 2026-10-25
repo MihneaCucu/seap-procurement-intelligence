@@ -1,0 +1,8 @@
+# Downloaded source data and generated analytical tables
+/data/raw/
+/data/processed/
+
+# Python environment and cache
+.venv/
+__pycache__/
+*.py[cod]
