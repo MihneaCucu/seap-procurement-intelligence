@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 import re
+import tempfile
+import csv
 from pathlib import Path
 
 import pandas as pd
@@ -17,20 +19,98 @@ OUT = ROOT / "data" / "processed"
 def load_source(path: Path) -> pd.DataFrame:
     suffix = path.suffix.lower()
     if suffix == ".csv":
-        with path.open(encoding="utf-8-sig", newline="") as stream:
-            first_line = stream.readline()
+        with path.open("rb") as stream:
+            header_bytes = stream.readline()
+            sample_bytes = header_bytes + stream.read(1_000_000)
+        try:
+            sample_bytes.decode("utf-8-sig")
+            encoding = "utf-8-sig"
+        except UnicodeDecodeError:
+            # Older Romanian catalog exports may use a Windows code page.
+            sample_bytes.decode("cp1250", errors="replace")
+            encoding = "cp1250"
+        first_line = header_bytes.decode(encoding, errors="replace").lstrip("\ufeff")
+
         if first_line.startswith("|NUMAR_ACHIZITIE_DIRECTA|"):
             frame = load_2024_direct_csv(path)
+        elif "|,|" in first_line:
+            # These catalog CSVs wrap every field in pipes but leave numeric
+            # amounts unwrapped, with comma separators between the amounts.
+            with tempfile.TemporaryFile(mode="w+t", encoding="utf-8", newline="") as normalized:
+                with path.open(encoding=encoding, errors="replace", newline="") as source:
+                    expected_fields = first_line.count("|,|") + 1
+                    pending = ""
+                    for physical_line in source:
+                        pending += physical_line
+                        line = re.sub(
+                            r"\|,(-?\d*(?:\.\d+)?),(-?\d*(?:\.\d+)?),\|",
+                            "\x1f\\1\x1f\\2\x1f",
+                            pending,
+                        ).replace("|,|", "\x1f")
+                        if len(line.rstrip("\r\n").split("\x1f")) < expected_fields:
+                            continue
+                        normalized.write(re.sub(r"[\r\n]+", " ", line).rstrip() + "\n")
+                        pending = ""
+                    if pending:
+                        normalized.write(re.sub(r"[\r\n]+", " ", pending.replace("|,|", "\x1f")).rstrip() + "\n")
+                normalized.seek(0)
+                frame = pd.read_csv(
+                    normalized,
+                    dtype="string",
+                    sep="\x1f",
+                    quoting=csv.QUOTE_NONE,
+                    keep_default_na=False,
+                    low_memory=False,
+                )
+            frame.columns = [str(column).strip().strip("|") for column in frame.columns]
+            for column in frame.columns:
+                frame[column] = frame[column].str.strip().str.strip("|")
+        elif "^" in first_line:
+            expected_fields = first_line.count("^") + 1
+            with tempfile.TemporaryFile(mode="w+t", encoding="utf-8", newline="") as normalized:
+                with path.open(encoding=encoding, errors="replace", newline="") as source:
+                    pending = ""
+                    for physical_line in source:
+                        pending += physical_line
+                        if pending.count("^") < expected_fields - 1:
+                            continue
+                        fields = pending.rstrip("\r\n").split("^")
+                        if len(fields) > expected_fields:
+                            fields = fields[: expected_fields - 2] + [
+                                " ".join(fields[expected_fields - 2 : -1]),
+                                fields[-1],
+                            ]
+                        normalized.write("^".join(fields).replace("\r", " ").replace("\n", " ") + "\n")
+                        pending = ""
+                    if pending:
+                        normalized.write(pending.rstrip("\r\n").replace("\r", " ").replace("\n", " ") + "\n")
+                normalized.seek(0)
+                frame = pd.read_csv(
+                    normalized,
+                    dtype="string",
+                    sep="^",
+                    quoting=csv.QUOTE_NONE,
+                    keep_default_na=False,
+                    low_memory=False,
+                )
+            frame.columns = [str(column).strip() for column in frame.columns]
+            for column in frame.columns:
+                frame[column] = frame[column].str.strip()
         else:
+            delimiter = ","
+            if "|,|" not in first_line:
+                counts = {candidate: first_line.count(candidate) for candidate in ("|", "^", ";", "\t", ",")}
+                delimiter = max(counts, key=counts.get)
             frame = pd.read_csv(
                 path,
                 dtype="string",
-                encoding="utf-8-sig",
-                sep=",",
+                encoding=encoding,
+                encoding_errors="replace",
+                sep=delimiter,
                 keep_default_na=False,
                 low_memory=False,
             )
-            frame.columns = [str(column).strip() for column in frame.columns]
+            frame.columns = [str(column).strip().strip("|") for column in frame.columns]
         frame["source_sheet"] = "CSV"
     elif suffix in {".xls", ".xlsx"}:
         sheets = pd.read_excel(
@@ -41,7 +121,7 @@ def load_source(path: Path) -> pd.DataFrame:
         )
         sheet_frames = []
         for sheet_name, sheet_frame in sheets.items():
-            sheet_frame = sheet_frame.loc[:, ~sheet_frame.columns.astype(str).str.match(r"^Unnamed")]
+            sheet_frame = sheet_frame.loc[:, ~sheet_frame.columns.astype(str).str.match(r"^Unnamed")].copy()
             sheet_frame.columns = [str(column).strip() for column in sheet_frame.columns]
             for column in sheet_frame.columns:
                 sheet_frame[column] = sheet_frame[column].str.strip()
@@ -67,6 +147,11 @@ def load_2024_direct_csv(path: Path) -> pd.DataFrame:
             line_number += 1
             if not line.strip():
                 continue
+            if line.startswith("|DENUMIRE_AC|,|CUI_AC|,|COD_NUTS|,|DENUMIRE_NUTS|"):
+                # A 2022 Q2 direct-purchase export has a second, appended
+                # contracts table; contracts are imported from their own
+                # catalog resources instead of mixing record types here.
+                break
             first_line_number = line_number
             while True:
                 matches = list(re.finditer(r"\|([^|]*)\|", line))
@@ -119,6 +204,7 @@ def main() -> None:
 
     for resource in manifest["resources"]:
         source_path = ROOT / resource["path"]
+        target = OUT / resource["kind"] / f"year={resource['year']}" / f"quarter={resource['quarter']}.parquet"
         expected_size = resource.get("size_bytes")
         if not source_path.is_file():
             raise FileNotFoundError(source_path)
@@ -127,6 +213,34 @@ def main() -> None:
                 f"Incomplete source {source_path}: {source_path.stat().st_size} "
                 f"bytes; expected {expected_size}"
             )
+
+        if target.is_file():
+            existing = pd.read_parquet(target)
+            if "source_resource_id" in existing and existing["source_resource_id"].eq(resource["resource_id"]).all():
+                source_columns = [
+                    column
+                    for column in existing.columns
+                    if column not in {"source_year", "source_quarter", "record_type", "source_resource_id", "source_file", "source_sheet"}
+                ]
+                outputs[resource["kind"]] = outputs.get(resource["kind"], 0) + len(existing)
+                audit.append(
+                    {
+                        "year": resource["year"],
+                        "quarter": resource["quarter"],
+                        "record_type": resource["kind"],
+                        "source_file": source_path.name,
+                        "source_resource_id": resource["resource_id"],
+                        "rows": len(existing),
+                        "columns": len(source_columns),
+                        "field_names": source_columns,
+                        "null_cells": int(existing.isna().sum().sum()),
+                        "source_bytes": source_path.stat().st_size,
+                        "parquet_file": str(target.relative_to(ROOT)),
+                        "parquet_bytes": target.stat().st_size,
+                    }
+                )
+                print(f"{resource['year']} {resource['quarter']} {resource['kind']}: {len(existing):,} rows (reused)", flush=True)
+                continue
 
         frame = load_source(source_path)
         frame.insert(0, "source_year", int(resource["year"]))
@@ -144,7 +258,6 @@ def main() -> None:
         }
         source_columns = [column for column in frame.columns if column not in metadata_columns]
 
-        target = OUT / resource["kind"] / f"year={resource['year']}" / f"quarter={resource['quarter']}.parquet"
         target.parent.mkdir(parents=True, exist_ok=True)
         frame.to_parquet(target, index=False, compression="zstd")
 

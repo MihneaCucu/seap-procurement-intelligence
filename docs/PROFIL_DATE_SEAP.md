@@ -1,147 +1,206 @@
 # Profilul și stadiul datelor SEAP
 
-> Raport de inventariere și evaluare a pregătirii datelor pentru analiză. Cifrele provin din manifestul surselor și raportul importului local.
+> Inventar și evaluare a datelor colectate din portalul oficial data.gov.ro. Rândurile descriu înregistrări parsate, nu achiziții unice și nici valoare financiară totală.
 
-## Rezumat executiv
+## Rezumat
 
-- **Perioadă:** 2024–2025, toate trimestrele T1–T4.
-- **Surse:** 2 seturi oficiale data.gov.ro; licența indicată în catalog: Creative Commons Attribution 4.0.
-- **Resurse descărcate:** 16 (8 fișiere de achiziții directe, 8 de contracte).
-- **Înregistrări importate:** 5,627,434 (4,581,926 achiziții directe; 1,045,508 contracte publicate).
-- **Surse brute:** 1,005,713,727 bytes (aprox. 1.006 GB zecimali); ocupă circa 959 MiB pe discul local.
-- **Parquet:** 211,738,377 bytes (aprox. 211.7 MB zecimali; circa 202 MiB pe disc), 21.1% din dimensiunea surselor.
-- **Stadiu:** extrase și parsate în Parquet; încă nu sunt standardizate semantic într-o schemă comună.
+- **Interval calendaristic:** 2007–2025 (19 ani). Acoperirea tipurilor diferă pe perioade.
+- **Origine:** 11 pachete oficiale data.gov.ro cu exporturi publice SEAP.
+- **Resurse brute descărcate:** 86 fișiere; **7,665,519,813 bytes** (7.666 GB zecimali, 7.14 GiB).
+- **Formate originale:** CSV: 45, XLS: 10, XLSX: 31.
+- **Înregistrări parsate:** **20,412,265**: 16,224,211 achiziții directe, 4,082,605 contracte publicate și 105,449 contracte subsecvente.
+- **Tabele procesate:** 86 fișiere Parquet, **1,525,219,628 bytes** (1.525 GB zecimali, 1.42 GiB).
+- **Licențe:** variază după pachet/an; vezi tabelul de mai jos și manifestul.
 
-## Ce înseamnă „procesate”
+## Ce acoperă anii
 
-Fișierele au fost citite, rândurile extrase și salvate în Parquet, partiționat după tip, an și trimestru. Pentru CSV-ul atipic al achizițiilor directe din T1 și T2 2024 există parser dedicat care reconstruiește descrierile întinse pe mai multe linii. Pentru Excel au fost citite foile de date. Antetele originale sunt păstrate; celulele goale sunt reprezentate ca valori nule în raportul importului.
+| Interval | Acoperire disponibilă în import | Granularitate |
+|---|---|---|
+| 2007–2011 | Contracte publicate | anual |
+| 2012–2015 | Contracte publicate | semestre S1/S2 |
+| 2016 | Contracte și contracte subsecvente | semestre S1/S2 |
+| 2017 | Contracte și contracte subsecvente | trimestre T1–T4 |
+| 2018 | Contracte; contracte subsecvente T1 | trimestre unde există în catalog |
+| 2019–2025 | Contracte publicate și achiziții directe | trimestre T1–T4 |
 
-Valorile sunt încă text. Nu s-au făcut conversia semantică a datelor și sumelor în tipuri calendaristice/numerice, maparea sinonimelor dintre antete, deduplicarea, validarea completă a CPV-urilor sau verificări de consistență între exporturi. Se pot explora tabelele individuale; comparațiile agregate între ani necesită standardizare și control al calității.
+**Volum importat pe an:**
 
-## Volum pe ani
+| An | Directe | Contracte | Contracte subsecvente | Total |
+|---:|---:|---:|---:|---:|
+| 2007 | 0 | 62 220 | 0 | 62 220 |
+| 2008 | 0 | 114 602 | 0 | 114 602 |
+| 2009 | 0 | 122 353 | 0 | 122 353 |
+| 2010 | 0 | 124 347 | 0 | 124 347 |
+| 2011 | 0 | 105 688 | 0 | 105 688 |
+| 2012 | 0 | 108 038 | 0 | 108 038 |
+| 2013 | 0 | 66 644 | 0 | 66 644 |
+| 2014 | 0 | 73 827 | 0 | 73 827 |
+| 2015 | 0 | 77 099 | 0 | 77 099 |
+| 2016 | 0 | 75 368 | 45 480 | 120 848 |
+| 2017 | 0 | 102 049 | 41 978 | 144 027 |
+| 2018 | 0 | 51 777 | 17 991 | 69 768 |
+| 2019 | 2 467 401 | 66 781 | 0 | 2 534 182 |
+| 2020 | 2 224 044 | 105 734 | 0 | 2 329 778 |
+| 2021 | 2 366 402 | 419 260 | 0 | 2 785 662 |
+| 2022 | 2 267 327 | 564 577 | 0 | 2 831 904 |
+| 2023 | 2 317 111 | 796 733 | 0 | 3 113 844 |
+| 2024 | 2 347 641 | 415 684 | 0 | 2 763 325 |
+| 2025 | 2 234 285 | 629 824 | 0 | 2 864 109 |
+| **Total** | **16 224 211** | **4 082 605** | **105 449** | **20 412 265** |
 
-| An | Achiziții directe | Contracte publicate | Total |
-|---:|---:|---:|---:|
-| 2024 | 2,347,641 | 415,684 | 2,763,325 |
-| 2025 | 2,234,285 | 629,824 | 2,864,109 |
-| **Total** | **4,581,926** | **1,045,508** | **5,627,434** |
+Importul selectează contractele și achizițiile directe din pachetele naționale, plus seturile de contracte subsecvente disponibile în 2016–2018. Nu reprezintă toate fișierele asociate fiecărui pachet. Anunțurile de inițiere, modificările de contracte, invitațiile SAD, programele anuale de achiziții (PAAP) și alte familii auxiliare sunt inventariate pentru o etapă separată.
 
-## Volum pe trimestru
+## De unde provin
 
-| An | Trim. | Achiziții directe | Contracte publicate | Total |
-|---:|:---:|---:|---:|---:|
-| 2024 | T1 | 574,373 | 21,433 | 595,806 |
-| 2024 | T2 | 618,512 | 161,174 | 779,686 |
-| 2024 | T3 | 541,347 | 137,660 | 679,007 |
-| 2024 | T4 | 613,409 | 95,417 | 708,826 |
-| 2025 | T1 | 500,390 | 124,086 | 624,476 |
-| 2025 | T2 | 616,106 | 210,099 | 826,205 |
-| 2025 | T3 | 514,263 | 143,317 | 657,580 |
-| 2025 | T4 | 603,526 | 152,322 | 755,848 |
+Toate fișierele de bază provin din pachete oficiale data.gov.ro. Manifestul păstrează ID-ul pachetului și al resursei, URL-ul de descărcare, licența pachetului, dimensiunea măsurată și calea locală. Vezi [Achiziții publice 2023](https://data.gov.ro/dataset/achizitii-publice-2023), [Achiziții publice 2024](https://data.gov.ro/dataset/achizitii-publice-2024) și [Achiziții publice 2025](https://data.gov.ro/dataset/achizitii-publice-2025). Pentru pachetele vechi, metadatele și licențele sunt în [manifestul surselor](../data/source_manifest.json).
 
-Numărul de rânduri este numărul de înregistrări parsate din exportul trimestrial. Nu dovedește de la sine că data fiecărui rând cade exclusiv în trimestrul din numele fișierului; pentru interpretarea temporală trebuie verificate câmpurile de dată și regulile de publicare ale sursei.
+### Licența declarată de fiecare pachet
 
-## Inventarul fișierelor și importurilor
+| Pachet/an | Licența declarată în catalog |
+|---|---|
+| 2024 | Creative Commons Attribution 4.0 |
+| 2025 | Creative Commons Attribution 4.0 |
+| 2023 | Creative Commons Attribution 4.0 |
+| 2022 | Creative Commons Attribution 4.0 |
+| 2021 | Creative Commons Attribution 4.0 |
+| 2020 | OGL-ROU-1.0 |
+| 2019 | OGL-ROU-1.0 |
+| 2018 | OGL-ROU-1.0 |
+| 2017 | OGL-ROU-1.0 |
+| 2016 | OGL-ROU-1.0 |
+| 2007-2015 | OGL-ROU-1.0 |
 
-| An | Trim. | Tip | Format | Fișier sursă | Rânduri | Coloane | Celule nule | % nule | Brut MB | Parquet MB |
-|---:|:---:|:---:|:---:|---|---:|---:|---:|---:|---:|---:|
-| 2024 | T1 | contracts | CSV | `datagov-raport-contracte-publicate-t-i-2024.csv` | 21,433 | 27 | 2,555 | 0.44% | 9.62 | 0.32 |
-| 2024 | T1 | direct | CSV | `datagov-raport-achizitii-directe-t-i-2024.csv` | 574,373 | 13 | 0 | 0.00% | 139.95 | 22.80 |
-| 2024 | T2 | contracts | CSV | `datagov-raport-contracte-publicate-t-ii-2024.csv` | 161,174 | 27 | 17,221 | 0.40% | 72.52 | 2.31 |
-| 2024 | T2 | direct | CSV | `datagov-raport-achizitii-directe-t-ii-2024.csv` | 618,512 | 13 | 0 | 0.00% | 150.01 | 24.81 |
-| 2024 | T3 | contracts | XLS | `datagov-raport-contracte-tiii.xls` | 137,660 | 27 | 13,318 | 0.36% | 57.86 | 2.07 |
-| 2024 | T3 | direct | XLS | `datagov-raport-achizitii-directe-tiii.xls` | 541,347 | 14 | 528,304 | 6.97% | 148.24 | 23.99 |
-| 2024 | T4 | contracts | XLSX | `datagov-raport-contracte-t-iv_2024.xlsx` | 95,417 | 21 | 3,448 | 0.17% | 9.62 | 1.56 |
-| 2024 | T4 | direct | XLSX | `datagov-raport-achizitii-directe-t-iv_2024.xlsx` | 613,409 | 14 | 597,270 | 6.95% | 72.24 | 26.47 |
-| 2025 | T1 | contracts | XLSX | `datagov_raport_contracte_t1_2025.xlsx` | 124,086 | 21 | 2,729 | 0.10% | 12.48 | 1.73 |
-| 2025 | T1 | direct | XLSX | `datagov_raport-achizitii_directe_t1_2025.xlsx` | 500,390 | 14 | 488,554 | 6.97% | 63.12 | 22.02 |
-| 2025 | T2 | contracts | XLSX | `contracte-t2-2025.xlsx` | 210,099 | 21 | 7,648 | 0.17% | 20.86 | 2.58 |
-| 2025 | T2 | direct | XLSX | `achizitii-directe-t2-2025.xlsx` | 616,106 | 14 | 599,826 | 6.95% | 77.82 | 27.60 |
-| 2025 | T3 | contracts | XLSX | `datagov-contracte-tiii-2025.xlsx` | 143,317 | 21 | 3,405 | 0.11% | 14.36 | 1.95 |
-| 2025 | T3 | direct | XLSX | `datagov-achizitii-directe-tiii-2025.xlsx` | 514,263 | 14 | 502,384 | 6.98% | 65.51 | 23.06 |
-| 2025 | T4 | contracts | XLSX | `contracte-t_iv_2025.xlsx` | 152,322 | 21 | 2,861 | 0.09% | 15.37 | 2.12 |
-| 2025 | T4 | direct | XLSX | `achiziii-directe-t_iv_2025.xlsx` | 603,526 | 14 | 589,010 | 6.97% | 76.13 | 26.33 |
+Respectă licența fiecărui pachet și citează data.gov.ro/autoritatea publicatoare. Licențele nu sunt uniforme: pachetele 2021–2025 declară CC BY 4.0, iar pachetele mai vechi declară OGL-ROU-1.0.
 
-### Distribuția formatelor brute
+## Procesare și pregătirea pentru analiză
 
-- CSV: 4 resurse, T1–T2 2024 (achiziții directe și contracte).
-- XLS: 2 resurse, T3 2024.
-- XLSX: 10 resurse, T4 2024 și toate trimestrele 2025.
-- Parquet: 16 fișiere importate, unul pentru fiecare categorie/an/trimestru.
+Fișierele CSV/XLS/XLSX au fost descărcate și convertite în Parquet. Numele coloanelor originale sunt păstrate; fiecare tabel adaugă `source_year`, `source_quarter`, `record_type`, `source_resource_id`, `source_file` și `source_sheet`. Tipurile rămân separate în `direct`, `contracts` și `contracts_subsequent`.
 
-## Ce informații conțin
+Aceasta este **extragere și parsare**, nu o schemă analitică armonizată. Valorile rămân text; nu sunt convertite semantic datele și sumele, nu sunt mapate variantele de antete la câmpuri canonice și nu s-a făcut deduplicare. Nu s-a validat complet CPV, CUI, moneda sau consistența între exporturi. Pentru trenduri și agregări financiare trebuie standardizate tipurile și regulile pe ani.
 
-**Achiziții directe:** identificatori ai achiziției, autoritate contractantă și CUI, denumirea achiziției, cod/denumire CPV, date de publicare și atribuire/finalizare, valoare estimată ori atribuită, ofertant și CUI. În unele versiuni apar tipul contractului, finanțarea comunitară și programul.
+Exporturile legacy au fost mai puțin uniforme decât cele recente: separatoare `^`/`|`, câmpuri cu virgule și descrieri împărțite pe mai multe rânduri. La parsare, descrierile multiline au fost aplatizate; delimitatorii în plus din câteva câmpuri text au fost transformați în spații. Un export legacy a conținut byte-uri invalide pentru codepage-ul detectat, care au fost înlocuite la decodare. Aceste texte trebuie revizuite înaintea analizelor definitive.
 
-**Contracte publicate:** autoritate și CUI, în unele versiuni tipul autorității/activității, anunț și procedură, legislație, tipul și forma contractului, criteriu de atribuire, CPV, numere de anunț/lot/contract, date de publicare și contract, valoare în RON, ofertant și uneori oraș/țară. Câmpurile diferă între versiuni.
+### Anomalie de sursă: achiziții directe 2022 T2
 
-## Scheme și coloane
+CSV-ul de achiziții directe T2 2022 conține **415 941** rânduri de achiziții directe, urmate de un al doilea antet de contracte și șase rânduri anexate. Importul direct se oprește la acel antet ca să nu amestece tipurile. Contractele T2 sunt importate separat din resursa lor oficială proprie. Fișierul brut păstrează segmentul anexat pentru inspecție.
 
-În cele 16 tabele se găsesc **5 variante de schemă**, grupate după lista exactă de antete: trei la achiziții directe și două la contracte. Același număr de coloane nu garantează aceeași semnificație.
+## Alte resurse oficiale românești de investigat
 
-### contracts: 27 coloane
+Aceste piste locale nu sunt incluse în tabelele de bază și nu au fost descărcate în această rundă:
 
-Întâlnită în 2024 T1, 2024 T2, 2024 T3.
+1. **Ministerul Sănătății – achizițiile unităților sanitare publice.** [Pachetul 2024](https://data.gov.ro/en/dataset/achizitii-derulate-de-unitatile-sanitare-publice-in-anul-2024) oferă fișiere lunare XLS pentru achiziții directe, anunțuri de inițiere, contracte și loturi neatribuite (48 resurse). Există și [pachetul 2025](https://data.gov.ro/en/dataset/achizitii-derulate-de-unitatile-sanitare-publice-in-anul-2025). Valoare posibilă: filtru sectorial și câmpuri suplimentare; fiind subset pe spitale, probabil se suprapune cu exporturile SEAP și trebuie verificat pe ID-uri înainte de unire.
+2. **Planuri anuale de achiziții (PAAP).** Catalogul data.gov.ro listează [Achiziții publice 2013–2016 – PAAP](https://data.gov.ro/dataset?groups=finante&q=achizitii+publice); acestea descriu planificarea, nu rezultatele atribuirii. Pot fi legate ulterior pentru analiza planificat-versus-realizat, după inventarierea fișierelor și licențelor.
+3. **ANAF – transparența achizițiilor proprii.** [Pagina ANAF pentru achiziții publice](https://www.anaf.mfinante.gov.ro/anaf/internet/ANAF/info_publice/info_interes_public/lista_achizitii_publice) publică centralizatoare și programe anuale. Este o sursă instituțională, nu o bază națională; formatele și structura trebuie inspectate înainte de ingestie.
+4. **CNSC / contestații.** Deciziile pot adăuga rezultatul contestațiilor procedurilor, dar în scanarea aceasta nu am identificat un export național structurat potrivit pentru ingestie; portalul și documentele publice necesită o cercetare separată.
 
-`Autoritate contractanta`, `CUI`, `Tip autoritate`, `Tip activitate`, `Tip anunt`, `Tip procedura`, `Tip legislatie`, `Tip incheiere contract`, `Tip contract`, `Modalitate de desfasurare`, `Cu licitatie electronica?`, `Tip criteriu de atribuire`, `Cod CPV`, `Denumire CPV`, `Numar anunt initiere`, `Data publicare`, `Numar lot`, `Numar anunt atribuire`, `Data publicare.1`, `Data contract`, `Numar contract`, `Incheiar prin`, `Valoare contract (RON)`, `Ofertant`, `CUI ofertant`, `Oras`, `Tara`
+Ordinea recomandată: inspectăm schema și licența fiecărui pachet, descărcăm separat, comparăm ID-urile cu exportul SEAP și păstrăm sursa secundară separată până când suprapunerea e măsurată.
 
-### contracts: 21 coloane
+## Inventarul tuturor resurselor importate
 
-Întâlnită în 2024 T4, 2025 T1, 2025 T2, 2025 T3, 2025 T4.
+Dimensiunile brute sunt măsurate local după descărcare; cele Parquet sunt măsurate după import. `Tip export` corespunde coloanei `record_type`.
 
-`Autoritate contractanta`, `CUI autoritate contractanta`, `Tip anunt`, `Tip procedura`, `Numar anunt initiere`, `Data publicare`, `Tip legislatie`, `Tip incheiere contract`, `Tip contract`, `Tip criterii de atribuire`, `Cod CPV`, `Denumire CPV`, `Numar lot`, `Numar anunt atribuire`, `Data publicare.1`, `Data contract`, `Numar contract`, `Incheiat prin`, `Valoare contract (RON)`, `Ofertant castigator`, `CUI ofertant castigator`
+| An | Perioadă | Tip export | Format | Rânduri | Coloane | Brute MB | Parquet MB | Sursă |
+|---:|:---:|---|:---:|---:|---:|---:|---:|---|
+| 2024 | T1 | contracts | CSV | 21 433 | 27 | 9.62 | 0.32 | `datagov-raport-contracte-publicate-t-i-2024.csv` |
+| 2024 | T1 | direct | CSV | 574 373 | 13 | 139.95 | 22.80 | `datagov-raport-achizitii-directe-t-i-2024.csv` |
+| 2024 | T2 | contracts | CSV | 161 174 | 27 | 72.52 | 2.31 | `datagov-raport-contracte-publicate-t-ii-2024.csv` |
+| 2024 | T2 | direct | CSV | 618 512 | 13 | 150.01 | 24.81 | `datagov-raport-achizitii-directe-t-ii-2024.csv` |
+| 2024 | T3 | contracts | XLS | 137 660 | 27 | 57.86 | 2.07 | `datagov-raport-contracte-tiii.xls` |
+| 2024 | T3 | direct | XLS | 541 347 | 14 | 148.24 | 23.99 | `datagov-raport-achizitii-directe-tiii.xls` |
+| 2024 | T4 | contracts | XLSX | 95 417 | 21 | 9.62 | 1.56 | `datagov-raport-contracte-t-iv_2024.xlsx` |
+| 2024 | T4 | direct | XLSX | 613 409 | 14 | 72.24 | 26.47 | `datagov-raport-achizitii-directe-t-iv_2024.xlsx` |
+| 2025 | T1 | contracts | XLSX | 124 086 | 21 | 12.48 | 1.73 | `datagov_raport_contracte_t1_2025.xlsx` |
+| 2025 | T1 | direct | XLSX | 500 390 | 14 | 63.12 | 22.02 | `datagov_raport-achizitii_directe_t1_2025.xlsx` |
+| 2025 | T2 | contracts | XLSX | 210 099 | 21 | 20.86 | 2.58 | `contracte-t2-2025.xlsx` |
+| 2025 | T2 | direct | XLSX | 616 106 | 14 | 77.82 | 27.60 | `achizitii-directe-t2-2025.xlsx` |
+| 2025 | T3 | contracts | XLSX | 143 317 | 21 | 14.36 | 1.95 | `datagov-contracte-tiii-2025.xlsx` |
+| 2025 | T3 | direct | XLSX | 514 263 | 14 | 65.51 | 23.06 | `datagov-achizitii-directe-tiii-2025.xlsx` |
+| 2025 | T4 | contracts | XLSX | 152 322 | 21 | 15.37 | 2.12 | `contracte-t_iv_2025.xlsx` |
+| 2025 | T4 | direct | XLSX | 603 526 | 14 | 76.13 | 26.33 | `achiziii-directe-t_iv_2025.xlsx` |
+| 2023 | T1 | contracts | XLS | 226 412 | 1 | 94.38 | 0.07 | `acca52ff-50e6-4668-9fa7-c8b1c9201334_raport-contracte-publicate-t1-2023.xls` |
+| 2023 | T2 | contracts | XLS | 198 642 | 27 | 78.38 | 2.53 | `a9ca9109-6016-47ab-bfd1-8ee9fa0b0868_datagov-raport-contracte-publicate-tii-2023.xls` |
+| 2023 | T3 | contracts | CSV | 211 460 | 27 | 100.44 | 2.64 | `6ccf50f4-2862-4d32-b616-39e05faa0ee6_datagov-raport-contracte-publicate-t-iii-2023.csv` |
+| 2023 | T4 | contracts | CSV | 160 219 | 27 | 72.06 | 2.17 | `1a2d1fff-caec-4e9d-aad8-05a6ef8b954e_datagov-raport-contracte-publicate-t-iv-2023.csv` |
+| 2023 | T1 | direct | XLS | 584 127 | 1 | 174.95 | 1.21 | `28f536d5-fa32-4e9f-80a1-07454a1e488c_raport-achizitii-directe-t1-2023.xls` |
+| 2023 | T2 | direct | XLS | 593 825 | 1 | 178.82 | 1.24 | `3a8ab998-2a0e-4e42-81b4-7f089e04dfb8_datagov-raport-achizitii-directe-tii-2023.xls` |
+| 2023 | T3 | direct | CSV | 529 481 | 16 | 148.41 | 24.63 | `b21a319f-514b-4e15-98a4-5a992caf3813_datagov-raport-achizitii-directe-t-iii-2023.csv` |
+| 2023 | T4 | direct | CSV | 609 678 | 13 | 147.43 | 23.69 | `5acf3253-4ea9-4d00-a6c3-3d220b9e9145_datagov-raport-achizitii-directe-t-iv-2023.csv` |
+| 2022 | T1 | contracts | CSV | 229 495 | 19 | 68.59 | 4.02 | `40d2ac89-80d9-4ced-9692-cc7f4fbc5be4_raport-contracte-t1-2022.csv` |
+| 2022 | T2 | contracts | XLS | 64 862 | 36 | 60.37 | 5.93 | `4ea3ccd1-a543-4e29-be7c-774aaa040912_raport-contracte-t2-2022.xls` |
+| 2022 | T3 | contracts | XLS | 116 381 | 36 | 93.58 | 8.82 | `9f8f9dc1-16da-4686-a2eb-c47f1c7d25f3_raport-datagov-contracte-t3-2022.xls` |
+| 2022 | T4 | contracts | XLS | 153 839 | 35 | 115.18 | 10.82 | `07490d6d-b45b-4e85-aa6b-c4a6126e5267_raport-datagov-contracte-t4-2022.xls` |
+| 2022 | T1 | direct | CSV | 543 491 | 13 | 130.89 | 21.12 | `76fc47a5-69aa-425f-b3e4-67ecd2f41f46_raport-achizitii-directe-t1-2022.csv` |
+| 2022 | T2 | direct | CSV | 415 941 | 13 | 126.50 | 16.59 | `9f541d85-c102-4dfc-a6f2-4ad012f375ee_raport-achizitii-directe-t2-2022.csv` |
+| 2022 | T3 | direct | CSV | 551 425 | 13 | 133.25 | 22.09 | `b4e53488-facd-4bf3-9030-234c8c6fea8c_raport-datagov-achizitii-directe-t3-2022.csv` |
+| 2022 | T4 | direct | CSV | 756 470 | 13 | 182.29 | 30.17 | `1bc1453a-5335-40c0-ae1c-303f9ad1eef0_raport-datagov-achizitii-directe-t4-2022.csv` |
+| 2021 | T1 | contracts | XLSX | 57 035 | 36 | 48.63 | 4.57 | `c923a70c-d7b7-4bf8-a1ff-eb025b5cdac0_raport-t-1-2021.xls` |
+| 2021 | T2 | contracts | XLS | 96 019 | 36 | 75.73 | 7.19 | `dea44c88-5a0a-4ac9-9fed-3575623ef136_raport-t-2-2021.xls` |
+| 2021 | T3 | contracts | CSV | 131 603 | 36 | 256.57 | 8.77 | `e5f2680d-6be9-4db2-a9ba-b3a8c3a1e5ed_raport-contracte-t3.csv` |
+| 2021 | T4 | contracts | CSV | 134 603 | 36 | 280.57 | 10.06 | `cd750e45-7e3a-424c-b3be-b0387bddc89d_raport-contracte-t4.csv` |
+| 2021 | T1 | direct | XLSX | 460 307 | 21 | 95.95 | 51.44 | `5fb48214-0818-4024-b13e-2eebe6b1a73d_achizitii_directe_2021_t1.xlsx` |
+| 2021 | T2 | direct | CSV | 583 038 | 21 | 309.67 | 64.06 | `e5b14dd8-2dc0-432d-9e11-820c9549aed5_achizitii-directe-2021-t2.csv` |
+| 2021 | T3 | direct | CSV | 555 262 | 21 | 297.65 | 63.79 | `5f439f08-4187-441c-9220-47c7f3109826_raport-da-t3.csv` |
+| 2021 | T4 | direct | CSV | 767 795 | 13 | 185.23 | 30.24 | `a94329f1-471a-4ffe-ba4a-c40033853795_raport-achizitii-directe-t4.csv` |
+| 2020 | T1 | contracts | XLSX | 21 160 | 36 | 26.42 | 2.80 | `f0767534-258d-4bf7-aad9-ed4f23de3fae_raport-t-1-2020.xls` |
+| 2020 | T2 | contracts | XLSX | 24 114 | 36 | 28.49 | 2.92 | `c1428d5c-4fd1-4130-9560-0f1e0acd430d_raport-t-2-2020.xls` |
+| 2020 | T3 | contracts | XLSX | 28 131 | 36 | 33.65 | 3.40 | `f08dd716-f8c8-4096-aa98-87dfe883af5d_raport-t-3-2020.xls` |
+| 2020 | T4 | contracts | XLSX | 32 329 | 36 | 37.35 | 3.91 | `accfe438-329f-40cd-848f-9f9d6ffe0515_raport-t-4-2020.xls` |
+| 2020 | T1 | direct | XLSX | 547 692 | 21 | 160.14 | 85.32 | `3e827637-6aba-4b47-85c9-e09f05c71057_achizitii_directe_2020_t1.xlsx` |
+| 2020 | T2 | direct | XLSX | 441 758 | 21 | 135.01 | 74.46 | `5d1f6b75-24c5-4413-8403-b34a10db2312_achizitii_directe_2020_t2.xlsx` |
+| 2020 | T3 | direct | XLSX | 556 561 | 21 | 170.14 | 94.24 | `4a800a9f-dfe9-4f6b-9bff-d418148e2514_achizitii_directe_2020_t3.xlsx` |
+| 2020 | T4 | direct | XLSX | 678 033 | 21 | 209.40 | 117.81 | `c7b416e5-3d59-4426-a09e-15f5acc33005_achizitii_directe_2020_t4.xlsx` |
+| 2019 | T1 | contracts | XLSX | 9 563 | 36 | 17.38 | 1.83 | `04345127-97ea-4524-bae1-e43d19c58c5d_raport-t-1-2019.xls` |
+| 2019 | T2 | contracts | XLSX | 17 560 | 36 | 27.77 | 2.95 | `cd2de7fc-44a7-457b-8315-3e0a92720aa3_raport-t-2-2019.xls` |
+| 2019 | T3 | contracts | XLSX | 17 560 | 36 | 27.77 | 2.95 | `522c1615-9898-4843-84da-b49fea56a3d1_raport-t-3-2019.xls` |
+| 2019 | T4 | contracts | XLSX | 22 098 | 36 | 33.68 | 3.63 | `bb6a46a7-f608-469d-9a25-751e2266931e_raport-t-4-2019.xls` |
+| 2019 | T1 | direct | XLSX | 503 338 | 21 | 140.45 | 72.29 | `4deb36c1-e977-487d-88a9-58a0beaab064_achizitiidirecte2019t1.xlsx` |
+| 2019 | T2 | direct | XLSX | 639 990 | 21 | 186.45 | 98.75 | `858ba60e-dc7a-44fa-a6d2-f14d1b4a9037_achizitiidirecte2019t2.xlsx` |
+| 2019 | T3 | direct | XLSX | 551 554 | 21 | 161.33 | 87.55 | `6591543a-5055-4cf3-a827-dca0a81d5b3a_achizitiidirecte2019t3.xlsx` |
+| 2019 | T4 | direct | XLSX | 772 519 | 21 | 226.82 | 123.55 | `1a31ba74-6368-4cc5-8d43-5ca04bdc43a8_achizitiidirecte2019t4.xlsx` |
+| 2018 | T1 | contracts | CSV | 23 328 | 39 | 52.59 | 2.39 | `f80fedce-a6b2-4804-9aa8-ad709835bc37_contracte-2018-t1.csv` |
+| 2018 | T2 | contracts | XLSX | 5 790 | 36 | 5.13 | 0.41 | `0512843f-f82e-44ee-b2c3-000348414adf_raport-t-2-2018.xls` |
+| 2018 | T3 | contracts | XLSX | 10 767 | 36 | 19.05 | 2.15 | `71db8c52-2540-4faf-932c-41f94654b48c_raport-t-3-2018.xls` |
+| 2018 | T4 | contracts | XLSX | 11 892 | 36 | 23.52 | 2.60 | `0b2a099f-5ab7-4ebf-89e6-ad8f70b4a637_raport-t-4-2018.xls` |
+| 2018 | T1 | contracts_subsequent | CSV | 17 991 | 36 | 46.86 | 1.79 | `74e9eac9-2296-47c5-8978-82e63da74fb0_contractesubsecvente-2018-t1.csv` |
+| 2017 | T1 | contracts | CSV | 21 616 | 39 | 45.45 | 1.85 | `b5557679-0331-46e4-b275-e91cb00c4f9c_contracte-2017-t1.csv` |
+| 2017 | T2 | contracts | CSV | 32 277 | 39 | 64.76 | 2.75 | `33d0caec-dc1b-41af-8cea-4f7018edf7d3_contracte-2017-t2.csv` |
+| 2017 | T3 | contracts | CSV | 32 441 | 39 | 59.80 | 3.20 | `9c8bf3c6-8193-4b3c-88a0-4398ca9132c1_contracte-2017-t3.csv` |
+| 2017 | T4 | contracts | CSV | 15 715 | 39 | 29.49 | 1.87 | `207bb4ae-fd4e-46f7-aee7-a670dcf36057_contracte-2017-t4.csv` |
+| 2017 | T1 | contracts_subsequent | CSV | 11 405 | 36 | 29.76 | 1.13 | `9ef1d77f-0813-475d-817d-4e723644e4c4_contracte-subsecvente-2017-t1.csv` |
+| 2017 | T2 | contracts_subsequent | CSV | 12 874 | 36 | 33.51 | 1.19 | `25627fe3-2c56-444a-b22f-b2e19177a94e_contracte-subsecvente-2017-t2.csv` |
+| 2017 | T3 | contracts_subsequent | CSV | 11 855 | 36 | 29.75 | 1.43 | `3cc76965-8f4c-4498-b8ef-48db08fee8da_contracte-subsecvente-2017-t3.csv` |
+| 2017 | T4 | contracts_subsequent | CSV | 5 844 | 36 | 14.87 | 0.92 | `df280754-e4c8-4b41-99fa-e8cc1dc92210_contracte-subsecvente-2017-t4.csv` |
+| 2016 | S1 | contracts | CSV | 39 811 | 39 | 79.28 | 4.41 | `b41e3020-66af-435a-8acb-2447886d9065_contracte-2016-s1.csv` |
+| 2016 | S2 | contracts | CSV | 35 557 | 39 | 72.15 | 3.94 | `9a15e52f-f06d-4e35-aa5b-9e5c6a33a0c2_contracte-2016-s2.csv` |
+| 2016 | S1 | contracts_subsequent | CSV | 23 544 | 39 | 59.90 | 4.44 | `37a5429a-891f-470c-8e97-87d1d835a5fa_contracte-subsecvente-2016-s1.csv` |
+| 2016 | S2 | contracts_subsequent | CSV | 21 936 | 39 | 57.50 | 4.18 | `427b3e4c-838a-48f9-874a-40fb29034d08_contracte-subsecvente-2016-s2.csv` |
+| 2007 | anual | contracts | CSV | 62 220 | 39 | 38.14 | 5.98 | `c6abc0ef-3efb-4aef-bc0a-411f8cab2a28_contracte-2007.csv` |
+| 2012 | S1 | contracts | CSV | 47 077 | 39 | 48.52 | 2.86 | `432b8b75-eced-44d8-b32f-3dcb4f368be7_contrace-2012-s1.csv` |
+| 2012 | S2 | contracts | CSV | 60 961 | 39 | 91.32 | 4.58 | `91494a89-2383-4f4b-8097-fcb99ebffc18_contracte-2012-s2.csv` |
+| 2008 | anual | contracts | CSV | 114 602 | 39 | 65.70 | 10.25 | `2008_7ae7f6d5-fa9a-42aa-9cae-4f71f64ce451_contracte-2008.csv` |
+| 2009 | anual | contracts | CSV | 122 353 | 39 | 69.76 | 7.63 | `2009_6a9ba0f2-6fe3-4da4-ae20-c0e97de83230_contracte-2009.csv` |
+| 2010 | anual | contracts | CSV | 124 347 | 39 | 73.72 | 6.92 | `2010_e7ef4edc-309a-47ca-9e8b-be3986507752_contracte-2010.csv` |
+| 2011 | anual | contracts | CSV | 105 688 | 39 | 67.17 | 5.85 | `2011_842622dd-936c-494c-b992-49187b49e238_contracte-2011.csv` |
+| 2013 | S1 | contracts | CSV | 28 512 | 39 | 40.77 | 4.23 | `2013_99f8d3bb-9a16-43e3-9157-f4eeec119584_contracte-2013-s1.csv` |
+| 2013 | S2 | contracts | CSV | 38 132 | 39 | 72.33 | 5.91 | `2013_fec15757-02aa-42b1-8524-37da8fd14480_contracte-2013-s2.csv` |
+| 2014 | S1 | contracts | CSV | 33 250 | 39 | 64.56 | 4.58 | `2014_cfe94ff9-e85e-4991-86ba-22ea376bcc67_contracte-2014-s1.csv` |
+| 2014 | S2 | contracts | CSV | 40 577 | 39 | 78.41 | 6.57 | `2014_9e243b07-1a11-4052-8beb-8fdef730df8d_contracte-2014-s2.csv` |
+| 2015 | S1 | contracts | CSV | 36 808 | 39 | 69.94 | 5.72 | `2015_53673c9f-04b7-4b54-bf40-9db868afdaa5_contracte-2015-s1.csv` |
+| 2015 | S2 | contracts | CSV | 40 291 | 39 | 78.30 | 5.53 | `2015_fa5d8e71-8f87-4775-a8a8-fe0bb23f7b1c_contracte-2015-s2.csv` |
 
-### direct: 13 coloane
+## Fișiere locale și reproducere
 
-Întâlnită în 2024 T1, 2024 T2.
+- Fișiere originale: `data/raw/{year}/` și `data/raw/historical/`.
+- Tabele Parquet: `data/processed/{type}/year=YYYY/quarter={t1..t4,s1,s2,annual}.parquet`.
+- Raport automat de import: `data/processed/import_report.json`.
+- Proveniență/URL-uri/licențe: `data/source_manifest.json`.
+- Cod: `scripts/download_data.py`, `scripts/import_data.py`; instalare din `requirements.txt`.
+- Datele brute și procesate sunt ignorate de Git; repository-ul conține cod, manifest și documentație.
 
-`NUMAR_ACHIZITIE_DIRECTA`, `DATA_PUBLICARE_ACHIZITIE`, `STARE_ACHIZITIE`, `DENUMIRE_AC`, `CUI_AC`, `DENUMIRE_ACHIZITIE`, `COD_CPV`, `DENUMIRE_CPV`, `DATA_ATRIBUIRE_ACHIZITIE`, `VALOARE_ESTIMATA_RON`, `VALOARE_ATRIBUITA_RON`, `OFERTANT`, `CUI_OFERTANT`
+## Pași următori
 
-### direct: 14 coloane
-
-Întâlnită în 2024 T3.
-
-`Autoritate contractanta`, `CUI autoritate`, `Numar achizitie`, `Data publicare`, `Denumire`, `Cod CPV`, `Denumire CPV`, `Tip contract`, `Fonduri comunitare?`, `Denumire program`, `Data atribuire`, `Valoare atribuita (RON)`, `Ofertant castigator`, `CUI ofertant castigator`
-
-### direct: 14 coloane
-
-Întâlnită în 2024 T4, 2025 T1, 2025 T2, 2025 T3, 2025 T4.
-
-`Autoritate contractanta`, `CUI autoritate contractanta`, `Numar achizitie directa`, `Data publicare`, `Denumire achizitie`, `Cod CPV`, `Denumire CPV`, `Tip contract`, `Finantare prin fonduri comunitare?`, `Denumire program`, `Data finalizare`, `Valoare achizitie (RON)`, `Ofertant castigator`, `CUI ofertant castigator`
-
-## Observații de calitate și interpretare
-
-1. **Scheme schimbate în timp.** Contractele au 27 de coloane în T1–T3 2024 și 21 în T4 2024–2025. Achizițiile directe au 13 coloane în T1–T2 2024, 14 în T3 2024, o schemă de 14 în T4 2024 și schema de 14 coloane folosită în 2025.
-2. **Valori lipsă.** Raportul conține numărul de celule nule pe tabel. La achizițiile directe T3 2024–2025, aproximativ 6.9–7.0% din toate celulele sunt nule; pentru achizițiile directe T1–T2 2024 raportul indică zero. Diferența trebuie verificată față de codificarea valorilor goale din fiecare sursă înainte de a o interpreta ca diferență reală de completitudine.
-3. **Date și numere.** Valorile fiind text, agregările financiare, sortarea calendaristică și comparațiile numerice cer conversii explicite și reguli pentru separatori/valori invalide.
-4. **Sume.** Valoarea estimată, valoarea atribuită, valoarea achiziției și valoarea contractului sunt concepte diferite. Nu trebuie însumate împreună fără reguli documentate; nu reprezintă automat prețuri unitare.
-5. **Identificatori și duplicate.** CUI, numărul achiziției/anunțului/contractului și lotul pot ajuta la legare, dar cheile candidate și relațiile unu-la-mai-mulți trebuie verificate înaintea deduplicării.
-6. **CPV.** Codurile și descrierile sunt prezente, dar normalizarea și validarea nu fac parte din importul actual.
-7. **Perioade și versiuni.** Înaintea trendurilor trebuie stabilit dacă exporturile conțin versiuni repetate, înregistrări publicate cu întârziere sau contracte cu mai multe loturi.
-
-## Analize posibile acum și pașii următori
-
-**Explorare imediată:** numărări și distribuții pentru fiecare fișier trimestrial; frecvențe de CPV și autorități; inspecții preliminare ale ofertanților, valorilor, datelor și valorilor lipsă. Rezultatele trebuie să păstreze proveniența fișierului și schema.
-
-**Pentru comparații între ani și trimestre:**
-
-1. dicționar de date cu maparea antetelor variante la câmpuri canonice, păstrând și antetul original;
-2. conversie controlată pentru date, sume RON, CUI, identificatori și CPV;
-3. profilarea lipsurilor, duplicatelor, formatelor invalide și valorilor extreme pe sursă;
-4. reguli de legare între achiziții, anunțuri, contracte, loturi și ofertanți;
-5. tabele canonice separate pentru achiziții directe și contracte, cu proveniență an/trimestru/fișier;
-6. verificarea totalurilor și refacerea raportului de calitate după standardizare.
-
-Importul este complet la nivel de extragere în Parquet; pregătirea pentru analiză integrată este parțială.
-
-## Localizarea datelor și fișierelor
-
-- Brute: `data/raw/{2024,2025}/`.
-- Parquet: `data/processed/{direct,contracts}/year=YYYY/quarter=tN.parquet`.
-- Manifest surse: `data/source_manifest.json`.
-- Raport import: `data/processed/import_report.json`.
-- Sursele brute și Parquet sunt excluse din Git; codul, manifestul și documentația pot fi versionate.
-
-## Proveniență și limite
-
-Inventarul folosește cele 16 resurse din `data/source_manifest.json` și raportul `data/processed/import_report.json`. Dimensiunile surselor sunt cele declarate în catalog la colectare; cele Parquet sunt măsurate la import. Numărul de rânduri este numărul de rânduri parsate, nu o confirmare a unicității și nici o măsură a valorii monetare totale.
+1. Dicționar de antete canonice și standardizarea separată a achizițiilor directe, contractelor și subsecventelor.
+2. Conversie controlată pentru date, valori, monede, CUI și CPV; păstrarea câmpurilor originale și a provenienței.
+3. Profilarea duplicatelor, lipsurilor, codărilor și valorilor extreme pe fiecare an/sursă.
+4. Măsurarea suprapunerii între exporturile naționale și pachetele tematice/instituționale înainte de unire.
+5. Abia apoi agregări comparative și analize de furnizori, autorități, CPV și proceduri.
