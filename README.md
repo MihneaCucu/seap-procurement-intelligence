@@ -1,28 +1,24 @@
-# Public Procurement Intelligence — SEAP România
+# SEAP Procurement Intelligence
 
-Nume sugerat pentru depozit: `seap-procurement-intelligence`.
+An open data pipeline for collecting and preparing Romania's public procurement exports from SEAP for analysis.
 
-## Date colectate și importate
+## Current data coverage
 
-Prima ingestie folosește exporturile oficiale ADR/SEAP publicate pe [data.gov.ro](https://data.gov.ro/):
+The current import covers all four quarters of 2024 and 2025. It contains **5,627,434 records** across 16 quarterly exports:
 
-- [Achiziții publice 2024](https://data.gov.ro/dataset/achizitii-publice-2024)
-- [Achiziții publice 2025](https://data.gov.ro/dataset/achizitii-publice-2025)
-
-Am preluat pentru fiecare trimestru două familii de date: **achiziții directe** și **contracte publicate/atribuite**. Licența din catalog este Creative Commons Attribution 4.0. Inventarul cu URL-urile, ID-urile resurselor, dimensiunile declarate și numele fișierelor este în [`data/source_manifest.json`](data/source_manifest.json).
-
-### Import realizat
-
-| Tip înregistrare | 2024 | 2025 | Total |
+| Record type | 2024 | 2025 | Total |
 | --- | ---: | ---: | ---: |
-| Achiziții directe | 2.347.641 | 2.234.285 | 4.581.926 |
-| Contracte publicate | 415.684 | 629.824 | 1.045.508 |
+| Direct purchases | 2,347,641 | 2,234,285 | 4,581,926 |
+| Published contracts | 415,684 | 629,824 | 1,045,508 |
+| **Total** | **2,763,325** | **2,864,109** | **5,627,434** |
 
-Fișierele sursă sunt păstrate în `data/raw/{an}/`. Tabelele Parquet se află în `data/processed/{direct,contracts}/year={an}/quarter=t{1..4}.parquet`; fiecare rând conține metadate de proveniență. Raportul importului este generat în `data/processed/import_report.json`.
+## Sources
 
-## Rulare
+The source files are published on Romania's official open data portal, [data.gov.ro](https://data.gov.ro/), by the Authority for the Digitalization of Romania. They contain public information from SEAP and are listed under the [2024](https://data.gov.ro/dataset/achizitii-publice-2024) and [2025](https://data.gov.ro/dataset/achizitii-publice-2025) public procurement datasets. The catalog lists the Creative Commons Attribution 4.0 license. Resource URLs, IDs, declared sizes, and local filenames are recorded in [`data/source_manifest.json`](data/source_manifest.json).
 
-Necesită Python 3.10+ și `curl`.
+## Download and import
+
+Requires Python 3.10+ and `curl`.
 
 ```bash
 python3 -m pip install -r requirements.txt
@@ -30,10 +26,19 @@ python3 scripts/download_data.py
 python3 scripts/import_data.py
 ```
 
-Scriptul de descărcare verifică dimensiunea fiecărui fișier din catalog. Importul citește toate foile Excel. Exporturile CSV din achizițiile directe 2024 au un format atipic; parserul dedicat reconstruiește inclusiv rândurile cu descrieri pe mai multe linii.
+The downloader checks each file against its catalog size. The importer reads the Excel source sheets and handles the unusual multiline CSV records in the 2024 direct purchase exports.
 
-## Înainte de analiză sau modele
+## Output layout
 
-Schemele diferă între ani și trimestre, deci păstrăm antetele sursă. Valorile sunt importate ca text, iar celulele goale devin valori nule; conversia datelor și sumelor, normalizarea, deduplicarea și validarea CPV rămân pași separați. Achizițiile directe și contractele sunt păstrate separat. Câmpurile de valoare nu sunt automat prețuri unitare; încă nu am construit modele sau recomandări.
+- Raw source files: `data/raw/{year}/`
+- Parquet tables: `data/processed/{direct,contracts}/year={year}/quarter=t{1..4}.parquet`
+- Import counts, schemas, and null-cell counts: `data/processed/import_report.json`
+- Detailed dataset inventory and readiness report (Romanian): [`docs/PROFIL_DATE_SEAP.md`](docs/PROFIL_DATE_SEAP.md)
 
-Exporturile brute și tabelele Parquet sunt excluse din Git prin `.gitignore`, deoarece seturile sunt voluminoase și pot fi regenerate din manifest.
+Raw exports and generated Parquet tables are excluded from Git because of their size. They can be regenerated from the source manifest and download script.
+
+## Processing status
+
+The source files have been parsed into Parquet and partitioned by record type, year, and quarter. Original source column names are retained. Schemas differ between source years and quarters; values are currently stored as text, and blank cells are represented as nulls.
+
+The pipeline has not yet standardized fields across exports, converted dates and monetary amounts to semantic types, deduplicated records, or fully validated CPV codes. Direct purchases and published contracts remain separate. Amount fields are not automatically unit prices, and no predictive models or recommendations have been built yet.
