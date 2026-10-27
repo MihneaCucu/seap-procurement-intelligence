@@ -113,11 +113,24 @@ def load_source(path: Path) -> pd.DataFrame:
             frame.columns = [str(column).strip().strip("|") for column in frame.columns]
         frame["source_sheet"] = "CSV"
     elif suffix in {".xls", ".xlsx"}:
+        engine = "xlrd" if suffix == ".xls" else "openpyxl"
+        # Some SEAP workbooks place a report title on row 1 and the actual
+        # column names on row 2. Read the header explicitly before dropping
+        # unnamed columns, otherwise only the first source column survives.
+        preview = pd.read_excel(path, sheet_name=0, header=None, nrows=2, dtype="string", engine=engine)
+        title_row = preview.iloc[0].dropna() if len(preview) else pd.Series(dtype="string")
+        header_row = preview.iloc[1].dropna() if len(preview) > 1 else pd.Series(dtype="string")
+        report_title = (
+            len(title_row) == 1
+            and str(title_row.iloc[0]).strip().casefold().startswith("raport ")
+            and len(header_row) >= 4
+        )
         sheets = pd.read_excel(
             path,
             sheet_name=None,
+            header=1 if report_title else 0,
             dtype="string",
-            engine="xlrd" if suffix == ".xls" else "openpyxl",
+            engine=engine,
         )
         sheet_frames = []
         for sheet_name, sheet_frame in sheets.items():
@@ -216,7 +229,11 @@ def main() -> None:
 
         if target.is_file():
             existing = pd.read_parquet(target)
-            if "source_resource_id" in existing and existing["source_resource_id"].eq(resource["resource_id"]).all():
+            source_fields = [column for column in existing.columns if column not in {
+                "source_year", "source_quarter", "record_type", "source_resource_id", "source_file", "source_sheet"
+            }]
+            bad_report_header = len(source_fields) == 1 and str(source_fields[0]).strip().casefold().startswith("raport ")
+            if not bad_report_header and "source_resource_id" in existing and existing["source_resource_id"].eq(resource["resource_id"]).all():
                 source_columns = [
                     column
                     for column in existing.columns

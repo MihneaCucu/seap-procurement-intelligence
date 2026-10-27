@@ -8,8 +8,8 @@
 - **Origine:** 11 pachete oficiale data.gov.ro cu exporturi publice SEAP.
 - **Resurse brute descărcate:** 86 fișiere; **7,665,519,813 bytes** (7.666 GB zecimali, 7.14 GiB).
 - **Formate originale:** CSV: 45, XLS: 10, XLSX: 31.
-- **Înregistrări parsate:** **20,412,265**: 16,224,211 achiziții directe, 4,082,605 contracte publicate și 105,449 contracte subsecvente.
-- **Tabele procesate:** 86 fișiere Parquet, **1,525,219,628 bytes** (1.525 GB zecimali, 1.42 GiB).
+- **Înregistrări parsate:** **20,412,240**: 16,224,190 achiziții directe, 4,082,601 contracte publicate și 105,449 contracte subsecvente.
+- **Tabele procesate:** 86 fișiere Parquet, **1,590,130,859 bytes** (1.590 GB zecimali, 1.48 GiB).
 - **Licențe:** variază după pachet/an; vezi tabelul de mai jos și manifestul.
 
 ## Ce acoperă anii
@@ -43,10 +43,10 @@
 | 2020 | 2 224 044 | 105 734 | 0 | 2 329 778 |
 | 2021 | 2 366 402 | 419 260 | 0 | 2 785 662 |
 | 2022 | 2 267 327 | 564 577 | 0 | 2 831 904 |
-| 2023 | 2 317 111 | 796 733 | 0 | 3 113 844 |
+| 2023 | 2 317 090 | 796 729 | 0 | 3 113 819 |
 | 2024 | 2 347 641 | 415 684 | 0 | 2 763 325 |
 | 2025 | 2 234 285 | 629 824 | 0 | 2 864 109 |
-| **Total** | **16 224 211** | **4 082 605** | **105 449** | **20 412 265** |
+| **Total** | **16 224 190** | **4 082 601** | **105 449** | **20 412 240** |
 
 Importul selectează contractele și achizițiile directe din pachetele naționale, plus seturile de contracte subsecvente disponibile în 2016–2018. Nu reprezintă toate fișierele asociate fiecărui pachet. Anunțurile de inițiere, modificările de contracte, invitațiile SAD, programele anuale de achiziții (PAAP) și alte familii auxiliare sunt inventariate pentru o etapă separată.
 
@@ -117,12 +117,12 @@ Dimensiunile brute sunt măsurate local după descărcare; cele Parquet sunt mă
 | 2025 | T3 | direct | XLSX | 514 263 | 14 | 65.51 | 23.06 | `datagov-achizitii-directe-tiii-2025.xlsx` |
 | 2025 | T4 | contracts | XLSX | 152 322 | 21 | 15.37 | 2.12 | `contracte-t_iv_2025.xlsx` |
 | 2025 | T4 | direct | XLSX | 603 526 | 14 | 76.13 | 26.33 | `achiziii-directe-t_iv_2025.xlsx` |
-| 2023 | T1 | contracts | XLS | 226 412 | 1 | 94.38 | 0.07 | `acca52ff-50e6-4668-9fa7-c8b1c9201334_raport-contracte-publicate-t1-2023.xls` |
+| 2023 | T1 | contracts | XLS | 226 408 | 27 | 94.38 | 2.96 | `acca52ff-50e6-4668-9fa7-c8b1c9201334_raport-contracte-publicate-t1-2023.xls` |
 | 2023 | T2 | contracts | XLS | 198 642 | 27 | 78.38 | 2.53 | `a9ca9109-6016-47ab-bfd1-8ee9fa0b0868_datagov-raport-contracte-publicate-tii-2023.xls` |
 | 2023 | T3 | contracts | CSV | 211 460 | 27 | 100.44 | 2.64 | `6ccf50f4-2862-4d32-b616-39e05faa0ee6_datagov-raport-contracte-publicate-t-iii-2023.csv` |
 | 2023 | T4 | contracts | CSV | 160 219 | 27 | 72.06 | 2.17 | `1a2d1fff-caec-4e9d-aad8-05a6ef8b954e_datagov-raport-contracte-publicate-t-iv-2023.csv` |
-| 2023 | T1 | direct | XLS | 584 127 | 1 | 174.95 | 1.21 | `28f536d5-fa32-4e9f-80a1-07454a1e488c_raport-achizitii-directe-t1-2023.xls` |
-| 2023 | T2 | direct | XLS | 593 825 | 1 | 178.82 | 1.24 | `3a8ab998-2a0e-4e42-81b4-7f089e04dfb8_datagov-raport-achizitii-directe-tii-2023.xls` |
+| 2023 | T1 | direct | XLS | 584 116 | 16 | 174.95 | 31.75 | `28f536d5-fa32-4e9f-80a1-07454a1e488c_raport-achizitii-directe-t1-2023.xls` |
+| 2023 | T2 | direct | XLS | 593 815 | 16 | 178.82 | 32.73 | `3a8ab998-2a0e-4e42-81b4-7f089e04dfb8_datagov-raport-achizitii-directe-tii-2023.xls` |
 | 2023 | T3 | direct | CSV | 529 481 | 16 | 148.41 | 24.63 | `b21a319f-514b-4e15-98a4-5a992caf3813_datagov-raport-achizitii-directe-t-iii-2023.csv` |
 | 2023 | T4 | direct | CSV | 609 678 | 13 | 147.43 | 23.69 | `5acf3253-4ea9-4d00-a6c3-3d220b9e9145_datagov-raport-achizitii-directe-t-iv-2023.csv` |
 | 2022 | T1 | contracts | CSV | 229 495 | 19 | 68.59 | 4.02 | `40d2ac89-80d9-4ced-9692-cc7f4fbc5be4_raport-contracte-t1-2022.csv` |

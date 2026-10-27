@@ -5,9 +5,9 @@ A Romania-focused data pipeline for collecting and preparing public procurement 
 ## Data collected
 
 - **Coverage:** 2007–2025 across the catalog periods available in this collection. Direct purchases and contracts are quarterly for 2019–2025; older years include contracts and, for selected years, subsequent contracts at annual, semester, or quarterly granularity.
-- **Imported records:** **20,412,265** total: 16,224,211 direct purchases, 4,082,605 published contracts, and 105,449 subsequent contracts.
+- **Imported records:** **20,412,240** total: 16,224,190 direct purchases, 4,082,601 published contracts, and 105,449 subsequent contracts.
 - **Sources:** 11 official catalog packages and 86 downloaded resources (CSV: 45, XLS: 10, XLSX: 31).
-- **Local storage:** 7.666 GB of raw sources and 1.525 GB of Parquet output. Large data files are excluded from Git.
+- **Local storage:** 7.666 GB of raw sources and 1.590 GB of Parquet output. Large data files are excluded from Git.
 - **Licenses:** vary by source package/year. 2021–2025 list CC BY 4.0; older packages list OGL-ROU-1.0. Check the manifest before reuse.
 
 Coverage is not uniform across years. See the [Romanian data profile](docs/PROFIL_DATE_SEAP.md) for exact per-year counts, all 86 source files, licenses, parsing limitations, and additional Romanian government data sources under consideration.
