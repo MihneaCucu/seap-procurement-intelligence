@@ -1,0 +1,983 @@
+{
+  "schema_version": "relational-v1",
+  "scope": "reviewed_sample_only",
+  "notes": [
+    "Sample IDs are provisional technical references, not verified organization identities.",
+    "Source sheet and original row number are unavailable in this CSV projection.",
+    "Empty supplier, item, BNR-rate and conversion tables reflect missing or withheld evidence."
+  ],
+  "tables": {
+    "source_resources": [
+      {
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "package_id": "4a4903c4-b1e3-46d1-82a5-238287f9496c",
+        "source_file": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28_contracte-2007.csv",
+        "source_url": "https://data.gov.ro/dataset/4a4903c4-b1e3-46d1-82a5-238287f9496c/resource/c6abc0ef-3efb-4aef-bc0a-411f8cab2a28/download/contracte-2007.csv",
+        "license_title": "OGL-ROU-1.0",
+        "source_year": 2007,
+        "source_period": "annual"
+      },
+      {
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "package_id": "498d5b80-c681-4719-9a1a-c76f7d862461",
+        "source_file": "37a5429a-891f-470c-8e97-87d1d835a5fa_contracte-subsecvente-2016-s1.csv",
+        "source_url": "https://data.gov.ro/dataset/498d5b80-c681-4719-9a1a-c76f7d862461/resource/37a5429a-891f-470c-8e97-87d1d835a5fa/download/contracte-subsecvente-2016-s1.csv",
+        "license_title": "OGL-ROU-1.0",
+        "source_year": 2016,
+        "source_period": "s1"
+      },
+      {
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "package_id": "4c89be6f-50b5-4b83-8d8f-5bbf96b396df",
+        "source_file": "3e827637-6aba-4b47-85c9-e09f05c71057_achizitii_directe_2020_t1.xlsx",
+        "source_url": "https://data.gov.ro/dataset/4c89be6f-50b5-4b83-8d8f-5bbf96b396df/resource/3e827637-6aba-4b47-85c9-e09f05c71057/download/achizitii_directe_2020_t1.xlsx",
+        "license_title": "OGL-ROU-1.0",
+        "source_year": 2020,
+        "source_period": "t1"
+      },
+      {
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "package_id": "e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21",
+        "source_file": "datagov_raport_contracte_t1_2025.xlsx",
+        "source_url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/7344eeaf-c478-4f87-9669-c1bac3e521a8/download/datagov_raport_contracte_t1_2025.xlsx",
+        "license_title": "Creative Commons Attribution 4.0",
+        "source_year": 2025,
+        "source_period": "t1"
+      }
+    ],
+    "organizations": [
+      {
+        "organization_id": "sample-org-0001",
+        "name": "MINISTERUL APARARII UM 02534 IASI",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0002",
+        "name": "SPITALUL MUNICIPAL PLOIESTI",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0003",
+        "name": "SPITALUL CLINIC CAI FERATE TIMISOARA",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0004",
+        "name": "Agentia Nationala pentru Locuinte",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0005",
+        "name": "SPITALUL MUNICIPAL CARACAL",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0006",
+        "name": "COMUNA CIUGUD",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0007",
+        "name": "SPITALUL JUDETEAN  DE URGENTA SLATINA",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0008",
+        "name": "Ministerul Mediului si Schimbarilor Climatice",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0009",
+        "name": "ENEL DISTRIBUTIE BANAT SA Timisoara",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0010",
+        "name": "SPITALUL  MUNICIPAL MEDIAS",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0011",
+        "name": "SERVICIUL DE AMBULANTA AL JUDETULUI CLUJ",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0012",
+        "name": "Spitalul Clinic de Boli Infectioase Constanta",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0013",
+        "name": "SERVICIUL JUDETEAN DE AMBULANTA IALOMITA",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0014",
+        "name": "SPITALUL CLINIC PANAIT SIRBU",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0015",
+        "name": "SPITALUL CLINIC JUDETEAN DE URGENTA CLUJ",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0016",
+        "name": "Directia Generala Regionala a Finantelor Publice  Iasi",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0017",
+        "name": "Spital General CF Sibiu",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0018",
+        "name": "ORASUL BALS",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0019",
+        "name": "Gradinita cu Program Prelungit Nr.1",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0020",
+        "name": "INSTITUTUL DE MEDICINA LEGALA IASI",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0021",
+        "name": "CAMINUL PENTRU PERSOANE VARSTNICE BOCSA",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0022",
+        "name": "GRADINITA CU PROGRAM PRELUNGIT \"ELENA DOAMNA\"",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0023",
+        "name": "Institutul de Diabet, Nutritie si Boli Metabolice \"Prof. dr. N. C. Paulescu\"",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0024",
+        "name": "UNITATEA MILITARA 0521 BUCURESTI",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0025",
+        "name": "MUNICIPIUL BUCURESTI",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0026",
+        "name": "UAT JUDETUL ALBA",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0027",
+        "name": "CENTRUL MEDICAL DE DIAGNOSTIC SI TRATAMENT AMBULATORIU PLOIESTI",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0028",
+        "name": "UNIVERSITATEA \"BABES-BOLYAI\"",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0029",
+        "name": "Orasul Sannicolau Mare",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0030",
+        "name": "DIRECTIA GENERALA DE ASISTENTA SOCIALA SI PROTECTIA COPILULUI SECTOR 6",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0031",
+        "name": "SC GOSPODARIRE URBANA SRL",
+        "county": null,
+        "identity_status": "unresolved"
+      },
+      {
+        "organization_id": "sample-org-0032",
+        "name": "RETELE ELECTRICE ROMANIA S.A.",
+        "county": null,
+        "identity_status": "unresolved"
+      }
+    ],
+    "cpv_categories": [
+      {
+        "cpv_code": "24496500-2",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "24452100-8",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "24400000-8",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "45211100-0",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "24496000-7",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "45232400-6",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "15511700-0",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "30125100-2",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "45315500-3",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "33690000-3",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "34300000-0",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "33696500-0",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "50112100-4",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "33674000-5",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "33141125-2",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "90910000-9",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "24959100-2",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "30197220-4",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "15300000-1",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "79419000-4",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "15551310-1",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "15800000-6",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "33632100-0",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "33171110-3",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "50720000-8",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "09100000-0",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "33100000-1",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "32580000-2",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "30213100-6",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "15130000-8",
+        "scheme_version": "unknown"
+      },
+      {
+        "cpv_code": "09134200-9",
+        "scheme_version": "unknown"
+      }
+    ],
+    "procurement_records": [
+      {
+        "record_id": "sample-record-0001",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0001",
+        "authority_name_source": "MINISTERUL APARARII UM 02534 IASI",
+        "record_type": "published_contract",
+        "procurement_reference": "A/1605/1",
+        "published_at_source": "2007-09-17 10:18:49.187",
+        "contract_or_completion_date_source": "2007-08-23 00:00:00.000",
+        "title": "CONTRACT FURNIZARE REACTIVI",
+        "cpv_code": "24496500-2",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "1568.50",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0002",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0002",
+        "authority_name_source": "SPITALUL MUNICIPAL PLOIESTI",
+        "record_type": "published_contract",
+        "procurement_reference": "5955",
+        "published_at_source": "2007-11-28 01:30:00.800",
+        "contract_or_completion_date_source": "2007-11-23 00:00:00.000",
+        "title": "Achizitie medicamente antineoplazice",
+        "cpv_code": "24452100-8",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "3738.26",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0003",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0003",
+        "authority_name_source": "SPITALUL CLINIC CAI FERATE TIMISOARA",
+        "record_type": "published_contract",
+        "procurement_reference": "92",
+        "published_at_source": "2007-08-23 13:52:48.017",
+        "contract_or_completion_date_source": "2007-07-23 00:00:00.000",
+        "title": "CONTRACT DE FURNIZARE MEDICAMENTE",
+        "cpv_code": "24400000-8",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "7993.80",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0004",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0004",
+        "authority_name_source": "Agentia Nationala pentru Locuinte",
+        "record_type": "published_contract",
+        "procurement_reference": "8331",
+        "published_at_source": "2007-08-06 16:00:14.820",
+        "contract_or_completion_date_source": "2007-07-11 00:00:00.000",
+        "title": "contract de executie lucrari-constructii de locuinte pentru tineret",
+        "cpv_code": "45211100-0",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Lucrari",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "547515.31",
+        "currency_source": "EUR"
+      },
+      {
+        "record_id": "sample-record-0005",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0005",
+        "authority_name_source": "SPITALUL MUNICIPAL CARACAL",
+        "record_type": "published_contract",
+        "procurement_reference": "3935",
+        "published_at_source": "2007-05-04 12:55:22.123",
+        "contract_or_completion_date_source": "2007-03-20 00:00:00.000",
+        "title": "ACHIZITIE REACTIVI",
+        "cpv_code": "24496000-7",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "9689.91",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0006",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0006",
+        "authority_name_source": "COMUNA CIUGUD",
+        "record_type": "published_contract",
+        "procurement_reference": "3607/2007",
+        "published_at_source": "2007-08-30 01:30:00.210",
+        "contract_or_completion_date_source": "2007-08-08 00:00:00.000",
+        "title": "CONTRACT DE LUCRARI",
+        "cpv_code": "45232400-6",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Lucrari",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "4100000.00",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0007",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0007",
+        "authority_name_source": "SPITALUL JUDETEAN  DE URGENTA SLATINA",
+        "record_type": "published_contract",
+        "procurement_reference": "10851",
+        "published_at_source": "2007-05-28 08:22:21.950",
+        "contract_or_completion_date_source": "2007-05-03 00:00:00.000",
+        "title": "achizitie lapte praf pt copii nou-nascuti prematur, lapte praf pt sugari 0-12 luni",
+        "cpv_code": "15511700-0",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "8409.00",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0008",
+        "source_resource_id": "c6abc0ef-3efb-4aef-bc0a-411f8cab2a28",
+        "authority_id": "sample-org-0008",
+        "authority_name_source": "Ministerul Mediului si Schimbarilor Climatice",
+        "record_type": "published_contract",
+        "procurement_reference": "1990",
+        "published_at_source": "2007-05-30 08:54:18.553",
+        "contract_or_completion_date_source": "2007-05-05 00:00:00.000",
+        "title": "Achizitie cartuse de toner pentru imprimante, faxuri si copiatoare",
+        "cpv_code": "30125100-2",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "156959.00",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0009",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0009",
+        "authority_name_source": "ENEL DISTRIBUTIE BANAT SA Timisoara",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "CS 1-AC 572 EDB",
+        "published_at_source": "2015-10-21 01:30:00.077000000",
+        "contract_or_completion_date_source": "2016-01-01 00:00:00",
+        "title": "MENTENANTA INSTALATII MT-JT ZONA RESITA EDB",
+        "cpv_code": "45315500-3",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Lucrari",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "1727061.4700",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0010",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0010",
+        "authority_name_source": "SPITALUL  MUNICIPAL MEDIAS",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "CS03",
+        "published_at_source": "2015-06-05 01:30:00.630000000",
+        "contract_or_completion_date_source": "2016-01-01 00:00:00",
+        "title": "MED.NORM",
+        "cpv_code": "33690000-3",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "108.3100",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0011",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0011",
+        "authority_name_source": "SERVICIUL DE AMBULANTA AL JUDETULUI CLUJ",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "49",
+        "published_at_source": "2015-12-03 01:30:00.817000000",
+        "contract_or_completion_date_source": "2016-01-01 00:00:00",
+        "title": "Furnizare piese auto pentru parcul auto din dotarea SAJ Cluj - CS nr.2",
+        "cpv_code": "34300000-0",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "240073.0000",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0012",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0012",
+        "authority_name_source": "Spitalul Clinic de Boli Infectioase Constanta",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "3",
+        "published_at_source": "2015-09-11 01:30:00.143000000",
+        "contract_or_completion_date_source": "2016-01-03 00:00:00",
+        "title": "Reactivi de laborator",
+        "cpv_code": "33696500-0",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "6300.0000",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0013",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0013",
+        "authority_name_source": "SERVICIUL JUDETEAN DE AMBULANTA IALOMITA",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "2",
+        "published_at_source": "2015-11-21 01:30:00.073000000",
+        "contract_or_completion_date_source": "2016-01-04 00:00:00",
+        "title": "servicii de reparare a automobilelor din cadrul saj ialomita",
+        "cpv_code": "50112100-4",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Servicii",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "249962.8000",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0014",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0014",
+        "authority_name_source": "SPITALUL CLINIC PANAIT SIRBU",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "34",
+        "published_at_source": "2013-09-19 01:30:00.653000000",
+        "contract_or_completion_date_source": "2016-01-04 00:00:00",
+        "title": "CONTRACT SUBSECVENT LA ACORD CADRU NR.3299/13.08.2013",
+        "cpv_code": "33674000-5",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "21660.3000",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0015",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0015",
+        "authority_name_source": "SPITALUL CLINIC JUDETEAN DE URGENTA CLUJ",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "36/B/04.01.2016",
+        "published_at_source": "2013-10-26 01:30:00.160000000",
+        "contract_or_completion_date_source": "2016-01-04 00:00:00",
+        "title": "Fire de sutura",
+        "cpv_code": "33141125-2",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "1858.2000",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0016",
+        "source_resource_id": "37a5429a-891f-470c-8e97-87d1d835a5fa",
+        "authority_id": "sample-org-0016",
+        "authority_name_source": "Directia Generala Regionala a Finantelor Publice  Iasi",
+        "record_type": "subsequent_contract",
+        "procurement_reference": "15003",
+        "published_at_source": "2014-12-12 01:30:01.023000000",
+        "contract_or_completion_date_source": "2016-01-04 00:00:00",
+        "title": "Servicii de curatenie la sediile DGRFP Iasi din judetul Neamt",
+        "cpv_code": "90910000-9",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": "Servicii",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "127368.0000",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0017",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0017",
+        "authority_name_source": "Spital General CF Sibiu",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25231029",
+        "published_at_source": "09.03.2020 14:32:52",
+        "contract_or_completion_date_source": "09.03.2020 15:09:53",
+        "title": "Achizitie aparat aerosoli",
+        "cpv_code": "24959100-2",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "137",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0018",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0018",
+        "authority_name_source": "ORASUL BALS",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25231004",
+        "published_at_source": "09.03.2020 14:32:02",
+        "contract_or_completion_date_source": "11.03.2020 11:26:17",
+        "title": "AGRAFE BIROU",
+        "cpv_code": "30197220-4",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "8.4",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0019",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0019",
+        "authority_name_source": "Gradinita cu Program Prelungit Nr.1",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25230962",
+        "published_at_source": "09.03.2020 14:30:41",
+        "contract_or_completion_date_source": "10.03.2020 10:12:03",
+        "title": "ardei",
+        "cpv_code": "15300000-1",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "68.35",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0020",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0020",
+        "authority_name_source": "INSTITUTUL DE MEDICINA LEGALA IASI",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25231014",
+        "published_at_source": "09.03.2020 14:32:21",
+        "contract_or_completion_date_source": "09.03.2020 14:41:06",
+        "title": "Servicii de consultanță pentru mentenanța SMC conform SR EN ISO/IEC 17025:2018",
+        "cpv_code": "79419000-4",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "9817.2",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0021",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0021",
+        "authority_name_source": "CAMINUL PENTRU PERSOANE VARSTNICE BOCSA",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25231011",
+        "published_at_source": "09.03.2020 14:32:13",
+        "contract_or_completion_date_source": "11.03.2020 09:05:35",
+        "title": "Iaurt 175gr, 2.8% grasime",
+        "cpv_code": "15551310-1",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "96",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0022",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0022",
+        "authority_name_source": "GRADINITA CU PROGRAM PRELUNGIT \"ELENA DOAMNA\"",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25231043",
+        "published_at_source": "09.03.2020 14:33:13",
+        "contract_or_completion_date_source": "09.03.2020 14:40:58",
+        "title": "Oua cal. I",
+        "cpv_code": "15800000-6",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "45.9",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0023",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0023",
+        "authority_name_source": "Institutul de Diabet, Nutritie si Boli Metabolice \"Prof. dr. N. C. Paulescu\"",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25231040",
+        "published_at_source": "09.03.2020 14:33:08",
+        "contract_or_completion_date_source": "10.03.2020 09:08:42",
+        "title": "Meloxicam Vim Spectrum 15mg*20cpr (MELOXICAMUM) _8803_#RX",
+        "cpv_code": "33632100-0",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "16.83",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0024",
+        "source_resource_id": "3e827637-6aba-4b47-85c9-e09f05c71057",
+        "authority_id": "sample-org-0024",
+        "authority_name_source": "UNITATEA MILITARA 0521 BUCURESTI",
+        "record_type": "direct_purchase",
+        "procurement_reference": "DA25251294",
+        "published_at_source": "11.03.2020 11:15:11",
+        "contract_or_completion_date_source": "11.03.2020 14:58:48",
+        "title": "Masca dispozabila NIV tip ClassicStar total-face, marimea L",
+        "cpv_code": "33171110-3",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": null,
+        "contract_type": null,
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "3800",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0025",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0025",
+        "authority_name_source": "MUNICIPIUL BUCURESTI",
+        "record_type": "published_contract",
+        "procurement_reference": "21",
+        "published_at_source": "2025-01-02 13:00:48",
+        "contract_or_completion_date_source": "2022-02-14 00:00:00",
+        "title": null,
+        "cpv_code": "50720000-8",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Servicii de reparare si de intretinere a incalzirii centrale (Rev.2)",
+        "contract_type": "Servicii",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "2833241",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0026",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0026",
+        "authority_name_source": "UAT JUDETUL ALBA",
+        "record_type": "published_contract",
+        "procurement_reference": "28076/1245",
+        "published_at_source": "2025-01-02 13:00:49",
+        "contract_or_completion_date_source": "2022-12-29 00:00:00",
+        "title": null,
+        "cpv_code": "09100000-0",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Combustibili (Rev.2)",
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "677430",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0027",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0027",
+        "authority_name_source": "CENTRUL MEDICAL DE DIAGNOSTIC SI TRATAMENT AMBULATORIU PLOIESTI",
+        "record_type": "published_contract",
+        "procurement_reference": "1333359/2024",
+        "published_at_source": "2025-01-02 13:00:50",
+        "contract_or_completion_date_source": "2024-12-02 00:00:00",
+        "title": null,
+        "cpv_code": "33100000-1",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Echipamente medicale (Rev.2)",
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "20250",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0028",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0028",
+        "authority_name_source": "UNIVERSITATEA \"BABES-BOLYAI\"",
+        "record_type": "published_contract",
+        "procurement_reference": "1393",
+        "published_at_source": "2025-01-02 13:00:51",
+        "contract_or_completion_date_source": "2024-12-19 00:00:00",
+        "title": null,
+        "cpv_code": "32580000-2",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Echipament de prelucrare a datelor (Rev.2)",
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "12572",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0029",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0029",
+        "authority_name_source": "Orasul Sannicolau Mare",
+        "record_type": "published_contract",
+        "procurement_reference": "27171",
+        "published_at_source": "2025-01-02 13:00:56",
+        "contract_or_completion_date_source": "2024-12-04 00:00:00",
+        "title": null,
+        "cpv_code": "30213100-6",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Computere portabile (Rev.2)",
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "168392",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0030",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0030",
+        "authority_name_source": "DIRECTIA GENERALA DE ASISTENTA SOCIALA SI PROTECTIA COPILULUI SECTOR 6",
+        "record_type": "published_contract",
+        "procurement_reference": "20892",
+        "published_at_source": "2025-01-02 13:01:06",
+        "contract_or_completion_date_source": "2024-12-17 00:00:00",
+        "title": null,
+        "cpv_code": "15130000-8",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Produse din carne (Rev.2)",
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "166963",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0031",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0031",
+        "authority_name_source": "SC GOSPODARIRE URBANA SRL",
+        "record_type": "published_contract",
+        "procurement_reference": "9671",
+        "published_at_source": "2025-01-02 13:01:07",
+        "contract_or_completion_date_source": "2023-04-25 00:00:00",
+        "title": null,
+        "cpv_code": "09134200-9",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Motorina (Rev.2)",
+        "contract_type": "Furnizare",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "2757547",
+        "currency_source": "RON"
+      },
+      {
+        "record_id": "sample-record-0032",
+        "source_resource_id": "7344eeaf-c478-4f87-9669-c1bac3e521a8",
+        "authority_id": "sample-org-0032",
+        "authority_name_source": "RETELE ELECTRICE ROMANIA S.A.",
+        "record_type": "published_contract",
+        "procurement_reference": "433 / 10.12.2024",
+        "published_at_source": "2025-01-02 13:01:14",
+        "contract_or_completion_date_source": "2024-12-17 00:00:00",
+        "title": null,
+        "cpv_code": "45315500-3",
+        "cpv_scheme_version": "unknown",
+        "cpv_label_source": "Instalatii de tensiune medie (Rev.2)",
+        "contract_type": "Lucrari",
+        "procedure_type": null,
+        "number_of_offers": null,
+        "amount_source": "24999999",
+        "currency_source": "RON"
+      }
+    ],
+    "procurement_suppliers": [],
+    "procurement_items": [],
+    "bnr_exchange_rates": [],
+    "currency_conversions": []
+  }
+}

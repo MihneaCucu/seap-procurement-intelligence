@@ -36,3 +36,13 @@ The source exports have been downloaded and parsed into 86 Parquet tables. Origi
 ## Additional Romanian sources
 
 The profile documents official Romanian sources to assess next, including Ministry of Health public-hospital procurement exports, annual procurement plans (PAAP), ANAF institutional procurement disclosures, and CNSC decisions.
+
+## Target data model
+
+The unified dataset is being designed as related entities for organizations, procurement records, winning suppliers, CPV categories, purchased items, source resources, official historical BNR rates and dated currency conversions. See the [relational model and diagram](docs/data-model.md) and [SQL reference schema](schema/data-model.sql). The full Parquet collection has not yet been transformed into this model.
+
+A reproducible relational example from the reviewed 32-row sample is available in [JSON](docs/data-sample-normalized.json):
+
+```bash
+python scripts/build_normalized_sample.py
+```

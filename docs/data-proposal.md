@@ -27,47 +27,34 @@ Exporturile pot conține date personale: nume și identificatori ai unor furnizo
 
 Înainte de publicarea datelor prelucrate, vom verifica tipul furnizorilor și vom elimina numele și identificatorii celor detectați ca persoane fizice sau PFA; când nu putem stabili tipul furnizorului, vom omite câmpurile care îl pot identifica. Vom elimina adresele și datele de contact personale, vom verifica descrierile și vom redacta informațiile personale găsite sau vom exclude înregistrările care nu pot fi curățate în siguranță. Eșantionul actual nu conține numele sau CUI-urile furnizorilor și nici CUI-urile autorităților. Am revizuit vizual câmpurile text din cele 32 de rânduri și nu am identificat date de contact sau identificatori ai persoanelor fizice.
 
-## 4. Schema comună pentru setul final
+## 4. Schema relațională pentru setul final
 
-O înregistrare reprezintă un rând dintr-un export de achiziție directă, contract sau contract subsecvent. Schema de mai jos este **schema țintă** a setului final: câmpurile opționale pot lipsi când sursa nu le furnizează sau când trebuie protejate datele personale. Importul actual nu este încă transformat integral în această schemă.
+Vom organiza setul în entități legate prin identificatori. O înregistrare de achiziție reprezintă un rând din sursă; nu este încă deduplicată la nivelul achiziției economice. Instituțiile și firmele sunt organizații, cu roluri de autoritate contractantă sau furnizor în fiecare înregistrare.
 
-| Câmp | Tip | Ce reprezintă |
+| Entitate | Cheie | Câmpuri și relații principale |
 |---|---|---|
-| `source_year` | integer | Anul exportului |
-| `source_period` | string | Perioada exportului: `annual`, `s1`, `s2`, `t1`–`t4` |
-| `record_type` | enum | `direct_purchase`, `published_contract` sau `subsequent_contract` |
-| `contracting_authority` | string, opțional | Autoritatea contractantă |
-| `authority_county` | string, opțional | Județul autorității, dacă este verificat |
-| `procurement_reference` | string, opțional | Numărul achiziției, anunțului sau contractului |
-| `published_at` | string, opțional | Data publicării disponibilă în sursă |
-| `contract_or_completion_date` | string, opțional | Data contractului sau a finalizării, după tipul exportului |
-| `title` | string, opțional | Titlul sau denumirea achiziției |
-| `cpv_code` | string, opțional | Codul CPV |
-| `cpv_label` | string, opțional | Denumirea categoriei CPV |
-| `contract_type` | string, opțional | Tipul contractului |
-| `procedure_type` | string, opțional | Tipul procedurii, unde este disponibil |
-| `number_of_offers` | integer, opțional | Numărul de oferte, unde este disponibil |
-| `supplier_name` | string, opțional | Numele furnizorului, după verificarea datelor personale |
-| `supplier_identifier` | string, opțional | Identificatorul furnizorului, după verificarea datelor personale |
-| `amount_source` | string, opțional | Valoarea achiziției sau contractului din export; nu este neapărat preț unitar sau suma plătită |
-| `currency_source` | string, opțional | Moneda valorii din export |
-| `amount_eur` | decimal, opțional | Valoarea în EUR, când conversia a fost validată |
-| `quantity` | decimal, opțional | Cantitatea, dacă este disponibilă și verificată |
-| `quantity_unit` | string, opțional | Unitatea de măsură, dacă este disponibilă |
-| `source_resource_id` | string | Identificatorul resursei de origine |
-| `source_file` | string | Numele fișierului de origine |
+| `organizations` | `organization_id` | Nume, identificator verificat când poate fi publicat, județ și statutul identificării |
+| `procurement_records` | `record_id` | `authority_id`, tip, referință, titlu, date, valoare, monedă, CPV și `source_resource_id` |
+| `procurement_suppliers` | `record_id`, `supplier_id` | Leagă achizițiile de organizațiile câștigătoare |
+| `cpv_categories` | `cpv_code`, `scheme_version` | Categoria CPV; versiunea rămâne necunoscută până la verificare |
+| `procurement_items` | `item_id` | `record_id`, descriere, cantitate, unitate, preț unitar și dovada din sursă |
+| `source_resources` | `source_resource_id` | Fișier, URL, licență, an și perioadă de export |
+| `bnr_exchange_rates` | `rate_id` | Valută, data cursului oficial BNR, cotație, multiplicator și sursă |
+| `currency_conversions` | `conversion_id` | `record_id`, data achiziției și baza ei, valoare de origine, rezultat și referințe către cursurile BNR |
 
-Cantitatea, unitatea și valoarea convertită în EUR nu au fost completate în eșantion. Câmpurile furnizorilor sunt goale în eșantion; eventualele date publicate vor respecta măsurile descrise în secțiunea 3. Datele și valorile din export nu au fost încă normalizate.
+O autoritate poate avea multe achiziții; o achiziție poate avea mai mulți furnizori și mai multe poziții, când sursa le identifică. Cantitățile și datele lipsă rămân necompletate. Beneficiarul final nu este dedus din autoritatea contractantă. Modelul detaliat, diagrama și tipurile câmpurilor sunt în [schema documentată](data-model.md) și [schema SQL](../schema/data-model.sql).
 
-Exemplele sunt fragmente din rândurile reale ale eșantionului. Câmpurile lipsă din exemple sunt opționale; datele de proveniență sunt incluse. În eșantion, tipurile înregistrărilor sunt redenumite conform schemei comune.
+Conversiile vor folosi cursul oficial BNR din data achiziției: data contractului sau, la directe, data atribuirii/finalizării, după verificarea sensului în sursă. Pentru zile fără cotație folosim ultimul curs anterior, păstrând ambele date și sursa; când data nu poate fi verificată, conversia rămâne necompletată.
+
+Trei exemple reale din [eșantionul relațional](data-sample-normalized.json); ID-urile `sample-...` sunt referințe tehnice provizorii. Autoritățile și sursele referite se găsesc în entitățile separate din același fișier:
 
 ```jsonl
-{"source_year":2007,"source_period":"annual","record_type":"published_contract","contracting_authority":"MINISTERUL APARARII UM 02534 IASI","procurement_reference":"A/1605/1","title":"CONTRACT FURNIZARE REACTIVI","cpv_code":"24496500-2","amount_source":"1568.50","currency_source":"RON","source_resource_id":"c6abc0ef-3efb-4aef-bc0a-411f8cab2a28","source_file":"c6abc0ef-3efb-4aef-bc0a-411f8cab2a28_contracte-2007.csv"}
-{"source_year":2016,"source_period":"s1","record_type":"subsequent_contract","contracting_authority":"ENEL DISTRIBUTIE BANAT SA Timisoara","procurement_reference":"CS 1-AC 572 EDB","title":"MENTENANTA INSTALATII MT-JT ZONA RESITA EDB","cpv_code":"45315500-3","amount_source":"1727061.4700","currency_source":"RON","source_resource_id":"37a5429a-891f-470c-8e97-87d1d835a5fa","source_file":"37a5429a-891f-470c-8e97-87d1d835a5fa_contracte-subsecvente-2016-s1.csv"}
-{"source_year":2020,"source_period":"t1","record_type":"direct_purchase","contracting_authority":"Spital General CF Sibiu","procurement_reference":"DA25231029","title":"Achizitie aparat aerosoli","cpv_code":"24959100-2","amount_source":"137","currency_source":"RON","source_resource_id":"3e827637-6aba-4b47-85c9-e09f05c71057","source_file":"3e827637-6aba-4b47-85c9-e09f05c71057_achizitii_directe_2020_t1.xlsx"}
+{"record_id":"sample-record-0001","authority_id":"sample-org-0001","record_type":"published_contract","procurement_reference":"A/1605/1","title":"CONTRACT FURNIZARE REACTIVI","cpv_code":"24496500-2","cpv_scheme_version":"unknown","amount_source":"1568.50","currency_source":"RON","source_resource_id":"c6abc0ef-3efb-4aef-bc0a-411f8cab2a28"}
+{"record_id":"sample-record-0009","authority_id":"sample-org-0009","record_type":"subsequent_contract","procurement_reference":"CS 1-AC 572 EDB","title":"MENTENANTA INSTALATII MT-JT ZONA RESITA EDB","cpv_code":"45315500-3","cpv_scheme_version":"unknown","amount_source":"1727061.4700","currency_source":"RON","source_resource_id":"37a5429a-891f-470c-8e97-87d1d835a5fa"}
+{"record_id":"sample-record-0017","authority_id":"sample-org-0017","record_type":"direct_purchase","procurement_reference":"DA25231029","title":"Achizitie aparat aerosoli","cpv_code":"24959100-2","cpv_scheme_version":"unknown","amount_source":"137","currency_source":"RON","source_resource_id":"3e827637-6aba-4b47-85c9-e09f05c71057"}
 ```
 
-Perioada exportului nu este neapărat anul evenimentului: de exemplu, unele contracte publicate în exporturi recente au date de contract din ani anteriori. Schema păstrează separat anul/perioada sursei și datele din rând, atunci când sunt disponibile.
+Cele 32 de rânduri reale sunt disponibile și în [CSV](data-sample.csv), ca vedere tabelară pentru checkpoint. Exemplul relațional conține 32 de înregistrări, 32 de organizații provizorii, 31 de coduri CPV și 4 surse. Furnizorii, pozițiile și conversiile sunt necompletate în acest exemplu. Transformarea întregului import în modelul relațional urmează să fie realizată; datele originale rămân disponibile pentru verificare.
 
 ## 5. Cum demonstrăm utilitatea?
 
