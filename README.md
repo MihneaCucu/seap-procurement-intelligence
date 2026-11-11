@@ -2,6 +2,21 @@
 
 A Romania-focused data pipeline for collecting and preparing public procurement exports published through Romania's official open data portal, [data.gov.ro](https://data.gov.ro/).
 
+## Team dataset
+
+The project links the private [seap-data](https://github.com/MihneaCucu/seap-data) repository through the `dataset/` Git submodule. Dataset v1 contains screened analytical outputs for 2007–2025. Its release manifest pins the files, checksums and row counts used by the team.
+
+After accepting the private repository invitation and signing in with `gh auth login`, run:
+
+```bash
+git submodule update --init dataset
+python3 dataset/download.py
+python3 -m pip install -r dataset/requirements.txt
+python3 dataset/build_local_database.py
+```
+
+Open `dataset/files/procurement.duckdb` in read-only mode. Keep its Parquet files in the same directory. The [dataset README](https://github.com/MihneaCucu/seap-data#readme) explains access, schema and version updates.
+
 ## Data collected
 
 - **Coverage:** 2007–2025 across the catalog periods available in this collection. Direct purchases and contracts are quarterly for 2019–2025; older years include contracts and, for selected years, subsequent contracts at annual, semester, or quarterly granularity.
@@ -31,7 +46,7 @@ python3 scripts/import_data.py
 
 ## Processing status
 
-The source exports have been downloaded and parsed into 86 Parquet tables. Original columns and source provenance are retained, while values remain text. The data has **not** been semantically standardized, deduplicated, or fully validated, so cross-year analysis still needs a canonical schema and data-quality review. Legacy free-text fields need additional review because some files have inconsistent encodings, delimiters, and multiline descriptions.
+The original exports have been parsed with source provenance retained. The local relational build normalizes dates and amounts, filters unusable rows and exact duplicates, and applies ONRC, CPV and privacy checks. Dataset v1 publishes the screened internal analytical views through the private dataset repository. Unresolved identities and approximate duplicate candidates remain available for further review.
 
 ## Additional Romanian sources
 
@@ -39,7 +54,7 @@ The profile documents official Romanian sources to assess next, including Minist
 
 ## Target data model
 
-The unified dataset is being designed as related entities for organizations, procurement records, winning suppliers, CPV categories, purchased items, source resources, official historical BNR rates and dated currency conversions. See the [relational model and diagram](docs/data-model.md) and [SQL reference schema](schema/data-model.sql). The full Parquet collection has not yet been transformed into this model.
+The unified local dataset uses related entities for organizations, procurement records, winning suppliers, CPV categories, purchased items, source resources, official historical BNR rates and dated currency conversions. See the [relational model and diagram](docs/data-model.md) and [SQL reference schema](schema/data-model.sql). The team release includes the schemas of the actual exported analytical views.
 
 A reproducible relational example from the reviewed 32-row sample is available in [JSON](docs/data-sample-normalized.json):
 
